@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <ListPreference
+            android:key="pref_font_size"
+            android:title="Font Size"
+            android:summary="Change the font size"
+            android:entries="@array/font_size_entries"
+            android:entryValues="@array/font_size_values"
+            android:defaultValue="medium"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Character">
+        <EditTextPreference
+            android:key="pref_character_name"
+            android:title="Character Name"
+            android:summary="Enter your character name"
+            android:defaultValue="John Doe"/>
+        <EditTextPreference
+            android:key="pref_character_age"
+            android:title="Character Age"
+            android:summary="Enter your character age"
+            android:defaultValue="25"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Colors">
+        <io.syslogic.colorpicker.ColorPickerPreference
+            android:key="pref_color_background"
+            android:title="Background Color"
+            android:summary="Change the background color"
+            android:defaultValue="@color/white"
+            android:icon="@drawable/ic_baseline_invert_colors"/>
+        <io.syslogic.colorpicker.ColorPickerPreference
+            android:key="pref_color_text"
+            android:title="Text Color"
+            android:summary="Change the text color"
+            android:defaultValue="@color/black"
+            android:icon="@drawable/ic_baseline_invert_colors"/>
+        <io.syslogic.colorpicker.ColorPickerPreference
+            android:key="pref_color_not_completed"
+            android:title="Not Completed To-Do Color"
+            android:summary="Change not completed To-Do color"
+            android:defaultValue="@color/red"
+            android:icon="@drawable/ic_baseline_invert_colors"/>
+        <io.syslogic.colorpicker.ColorPickerPreference
+            android:key="pref_color_completed"
+            android:title="Completed To-Do Color"
+            android:summary="Change completed To-Do color"
+            android:defaultValue="@color/green"
+            android:icon="@drawable/ic_baseline_invert_colors"/>
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>
