@@ -74,4 +74,11 @@
     <string name="intelligence">Intelligence</string>
     <string name="agility">Agility</string>
     <string name="luck">Luck</string>
+    <string name="text_title_detail">Titel</string>
+    <string name="checkBox_text_detail">Status</string>
+    <string name="text_description_detail">Beschreibung</string>
+    <string name="start_date_text_detail">Anfangsdatum</string>
+    <string name="end_date_text_detail">Enddatum</string>
+    <string name="button_save_detail">Speichern</string>
+    <string name="button_delete_detail">Löschen</string>
 </resources>
