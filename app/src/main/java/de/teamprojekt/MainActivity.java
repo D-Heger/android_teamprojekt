@@ -7,8 +7,6 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,12 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Add a new to-do
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, DetailActivity.class));
-        });
     }
 
     @Override
