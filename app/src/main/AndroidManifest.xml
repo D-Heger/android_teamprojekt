@@ -30,6 +30,10 @@
             android:name=".SettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.TodoGamification" />
+        <activity
+            android:name=".CharacterActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TodoGamification" />
     </application>
 
 </manifest>
