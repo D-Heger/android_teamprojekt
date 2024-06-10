@@ -2,6 +2,7 @@ package de.teamprojekt;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,5 +28,19 @@ public class Utils {
             }
             return false;
         });
+    }
+
+    public static boolean handleSelectedOption(Context context, MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            context.startActivity(new Intent(context, SettingsActivity.class));
+            return true;
+        }
+        if (id == R.id.action_reset) {
+            context.startActivity(new Intent(context, ResetActivity.class));
+            return true;
+        }
+        return false;
     }
 }
