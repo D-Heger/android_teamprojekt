@@ -53,4 +53,11 @@
 
     <string name="add_todo">Add To-Do</string>
     <string name="action_reset">Reset App</string>
+    <string name="todo_title">Todo Title</string>
+    <string name="todo_description">Todo Description</string>
+    <string name="todo_categories">Todo Categories</string>
+    <string name="todo_status">Todo Status</string>
+    <string name="todo_priority">Todo Priority</string>
+    <string name="todo_startdate">Todo Startdate</string>
+    <string name="todo_enddate">Todo Enddate</string>
 </resources>
