@@ -52,4 +52,5 @@
     </string>
 
     <string name="add_todo">Add To-Do</string>
+    <string name="action_reset">Reset App</string>
 </resources>

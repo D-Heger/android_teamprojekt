@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         }
+        if (id == R.id.action_reset) {
+            startActivity(new Intent(MainActivity.this, ResetActivity.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
