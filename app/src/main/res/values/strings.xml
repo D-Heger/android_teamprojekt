@@ -63,6 +63,17 @@
     <string name="title_list">List View</string>
     <string name="title_add">Add View</string>
     <string name="title_character">Character View</string>
+    <string name="character_image">Character Image</string>
+    <string name="character_name_placeholder">John Doe</string>
+    <string name="character_age_placeholder">25 years</string>
+    <string name="strength">Strength</string>
+    <string name="default_level">Level 0</string>
+    <string name="perception">Perception</string>
+    <string name="endurance">Endurance</string>
+    <string name="charisma">Charisma</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="agility">Agility</string>
+    <string name="luck">Luck</string>
     <string name="text_title_detail">Titel</string>
     <string name="checkBox_text_detail">Status</string>
     <string name="text_description_detail">Beschreibung</string>
