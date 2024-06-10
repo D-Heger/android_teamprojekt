@@ -1,11 +1,15 @@
 package de.teamprojekt;
 
+import static de.teamprojekt.Utils.setNavBar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set up bottom navigation bar
+        BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
+        setNavBar(bnView, this);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -60,4 +60,7 @@
     <string name="todo_priority">Todo Priority</string>
     <string name="todo_startdate">Todo Startdate</string>
     <string name="todo_enddate">Todo Enddate</string>
+    <string name="title_list">List View</string>
+    <string name="title_add">Add View</string>
+    <string name="title_character">Character View</string>
 </resources>
