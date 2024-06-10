@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up bottom navigation bar
         BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
-        setNavBar(bnView, this);
+        setNavBar(bnView, this, R.id.navigation_list);
     }
 
 
