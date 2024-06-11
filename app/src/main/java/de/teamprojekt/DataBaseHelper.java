@@ -11,9 +11,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String TODO_PRIORITY = "PRIORITY_ID";
     public static final String TODO_CATEGORY = "CATEGORY_ID";
     public static final String TODO_STATUS = "STATUS";
-    public static final String TODO_ENDE_DATE = "ENDE_DATE";
-    public static final String TODO_ANFANG_DATE = "ANFANG_DATE";
-    public static final String TODO_TITEL = "TITEL";
+    public static final String TODO_END_DATE = "END_DATE";
+    public static final String TODO_START_DATE = "START_DATE";
+    public static final String TODO_TITLE = "TITLE";
     public static final String TODO_DESCRIPTION = "DESCRIPTION";
     public static final String CHARACTER_TABLE = "CHARACTER_TABLE";
     public static final String CHARACTER_NAME = "CHARACTER_NAME";
@@ -43,8 +43,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + TODO_TABLE + " (" + TODO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TODO_TITEL + " TEXT, " + TODO_DESCRIPTION + " TEXT," +
-                TODO_ANFANG_DATE + " INTERGER, " + TODO_ENDE_DATE + " INTEGER, " + TODO_STATUS + " BOOL, " + TODO_PRIORITY + " TEXT, " + TODO_CATEGORY + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + TODO_TABLE + " (" + TODO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TODO_TITLE + " TEXT, " + TODO_DESCRIPTION + " TEXT," +
+                TODO_START_DATE + " INTERGER, " + TODO_END_DATE + " INTEGER, " + TODO_STATUS + " BOOL, " + TODO_PRIORITY + " TEXT, " + TODO_CATEGORY + " TEXT)";
         db.execSQL(createTableStatement);
         createTableStatement = "CREATE TABLE " + CHARACTER_TABLE + " (CHARACTER_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 CHARACTER_NAME + " TEXT, " + CHARACTER_AGE + " INTEGER, " + CHARACTER_GENDER + " TEXT, " + CHARACTER_PICTURE_ID + " INTEGER," +
@@ -60,5 +60,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    
+
 }
