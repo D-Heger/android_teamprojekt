@@ -175,4 +175,27 @@ Datenbank für Todo und Character
 
 ## Plan für Mittwoch
 
+Main Goal: Activitys mit Datenbank verbinden
+Secondary Goal: Preferences beachten (Farben, Schriftgröße)
 
+- MainActivty
+    - Liste befüllen
+    - Swipe to delete
+    - Click to edit
+- DetailActivity
+    - Speichern des Todos in der DB
+    - Löschen des Todos in der DB
+    - Editieren des Todos in der DB
+- CharacterActivity
+    - Werte aus der DB holen/anzeigen
+- SettingsActivity
+    - Preferences setzen
+    - Preferences speichern
+
+Additional Goal: Swipe über die BottomNavigationBar; Confirmation Dialog für Löschen von Todos
+
+## Plan für Donnerstag
+
+Berechnung der Level und Experience
+Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung; Dialog für Reset + Reset
+Funktion per SettingsMenu
