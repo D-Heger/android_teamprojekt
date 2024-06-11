@@ -38,24 +38,4 @@
             android:defaultValue="@color/green"
             android:icon="@drawable/ic_baseline_invert_colors"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Priority Colors">
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_priority_low"
-            android:title="Low Priority Color"
-            android:summary="Change low priority color"
-            android:defaultValue="@color/grey"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_priority_medium"
-            android:title="Medium Priority Color"
-            android:summary="Change medium priority color"
-            android:defaultValue="@color/yellow"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_priority_high"
-            android:title="High Priority Color"
-            android:summary="Change high priority color"
-            android:defaultValue="@color/red"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-    </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

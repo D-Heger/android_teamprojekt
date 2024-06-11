@@ -8,7 +8,7 @@ public enum Priority {
     HIGH("High", R.color.red);
 
     private final String name;
-    private int color;
+    private final int color;
 
     Priority(String name, int color) {
         this.name = name;
@@ -21,10 +21,6 @@ public enum Priority {
 
     public int getColor() {
         return color;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
     }
 
     @NonNull
