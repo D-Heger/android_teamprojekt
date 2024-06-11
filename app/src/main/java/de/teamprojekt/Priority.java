@@ -15,7 +15,7 @@ public enum Priority {
         this.color = color;
     }
 
-    public static Priority fromName(String name) {
+    public static Priority priorityFromName(String name) {
         for (Priority priority : values()) {
             if (priority.name.equals(name)) {
                 return priority;

@@ -61,7 +61,7 @@ public enum Category {
         this.skill = skill;
     }
 
-    public static Category fromName(String name) {
+    public static Category categoryFromName(String name) {
         for (Category category : values()) {
             if (category.name.equals(name)) {
                 return category;
