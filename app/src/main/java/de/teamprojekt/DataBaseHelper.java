@@ -112,8 +112,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Todo> todos = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Table.TODO_TABLE, null);
-        while (cursor.moveToNext()) {
-            todos.add(cursorToTodo(cursor));
+        if (cursor.moveToFirst()) {
+            do {
+                todos.add(cursorToTodo(cursor));
+            } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
