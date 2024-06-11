@@ -81,4 +81,5 @@
     <string name="end_date_text_detail">End Date</string>
     <string name="button_save_detail">Save</string>
     <string name="button_delete_detail">Delete</string>
+    <string name="character_gender_placeholder">Male</string>
 </resources>
