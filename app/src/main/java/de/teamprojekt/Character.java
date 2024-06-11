@@ -27,32 +27,34 @@ public class Character {
     private int luck;
     private int luck_exp;
 
-    public Character(String name, int age, String gender, int icon, int level, int experience, int strength, int strength_exp, int perception, int perception_exp, int endurance, int endurance_exp, int charisma, int charisma_exp, int intelligence, int intelligence_exp, int agility, int agility_exp, int luck, int luck_exp) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.icon = icon;
-        this.level = level;
-        this.experience = experience;
-        this.strength = strength;
-        this.strength_exp = strength_exp;
-        this.perception = perception;
-        this.perception_exp = perception_exp;
-        this.endurance = endurance;
-        this.endurance_exp = endurance_exp;
-        this.charisma = charisma;
-        this.charisma_exp = charisma_exp;
-        this.intelligence = intelligence;
-        this.intelligence_exp = intelligence_exp;
-        this.agility = agility;
-        this.agility_exp = agility_exp;
-        this.luck = luck;
-        this.luck_exp = luck_exp;
+    private Character(Builder builder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.gender = builder.gender;
+        this.icon = builder.icon;
+        this.level = builder.level;
+        this.experience = builder.experience;
+        this.strength = builder.strength;
+        this.strength_exp = builder.strength_exp;
+        this.perception = builder.perception;
+        this.perception_exp = builder.perception_exp;
+        this.endurance = builder.endurance;
+        this.endurance_exp = builder.endurance_exp;
+        this.charisma = builder.charisma;
+        this.charisma_exp = builder.charisma_exp;
+        this.intelligence = builder.intelligence;
+        this.intelligence_exp = builder.intelligence_exp;
+        this.agility = builder.agility;
+        this.agility_exp = builder.agility_exp;
+        this.luck = builder.luck;
+        this.luck_exp = builder.luck_exp;
     }
 
     public String getName() {
         return name;
     }
+
+    // Getters and Setters...
 
     public void setName(String name) {
         this.name = name;
@@ -214,5 +216,138 @@ public class Character {
     @Override
     public String toString() {
         return getName();
+    }
+
+    public static class Builder {
+        // general
+        private String name;
+        private int age;
+        private String gender;
+        private int icon;
+        private int level;
+        private int experience;
+
+        // stats
+        private int strength;
+        private int strength_exp;
+        private int perception;
+        private int perception_exp;
+        private int endurance;
+        private int endurance_exp;
+        private int charisma;
+        private int charisma_exp;
+        private int intelligence;
+        private int intelligence_exp;
+        private int agility;
+        private int agility_exp;
+        private int luck;
+        private int luck_exp;
+
+        public Builder() {
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder gender(String gender) {
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder icon(int icon) {
+            this.icon = icon;
+            return this;
+        }
+
+        public Builder level(int level) {
+            this.level = level;
+            return this;
+        }
+
+        public Builder experience(int experience) {
+            this.experience = experience;
+            return this;
+        }
+
+        public Builder strength(int strength) {
+            this.strength = strength;
+            return this;
+        }
+
+        public Builder strength_exp(int strength_exp) {
+            this.strength_exp = strength_exp;
+            return this;
+        }
+
+        public Builder perception(int perception) {
+            this.perception = perception;
+            return this;
+        }
+
+        public Builder perception_exp(int perception_exp) {
+            this.perception_exp = perception_exp;
+            return this;
+        }
+
+        public Builder endurance(int endurance) {
+            this.endurance = endurance;
+            return this;
+        }
+
+        public Builder endurance_exp(int endurance_exp) {
+            this.endurance_exp = endurance_exp;
+            return this;
+        }
+
+        public Builder charisma(int charisma) {
+            this.charisma = charisma;
+            return this;
+        }
+
+        public Builder charisma_exp(int charisma_exp) {
+            this.charisma_exp = charisma_exp;
+            return this;
+        }
+
+        public Builder intelligence(int intelligence) {
+            this.intelligence = intelligence;
+            return this;
+        }
+
+        public Builder intelligence_exp(int intelligence_exp) {
+            this.intelligence_exp = intelligence_exp;
+            return this;
+        }
+
+        public Builder agility(int agility) {
+            this.agility = agility;
+            return this;
+        }
+
+        public Builder agility_exp(int agility_exp) {
+            this.agility_exp = agility_exp;
+            return this;
+        }
+
+        public Builder luck(int luck) {
+            this.luck = luck;
+            return this;
+        }
+
+        public Builder luck_exp(int luck_exp) {
+            this.luck_exp = luck_exp;
+            return this;
+        }
+
+        public Character build() {
+            return new Character(this);
+        }
     }
 }

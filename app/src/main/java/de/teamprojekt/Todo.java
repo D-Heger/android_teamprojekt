@@ -14,15 +14,15 @@ public class Todo {
     private Priority priority;
     private Category category;
 
-    public Todo(int id, String title, String description, Date startDate, Date endDate, boolean status, Priority priority, Category category) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.status = status;
-        this.priority = priority;
-        this.category = category;
+    private Todo(Builder builder) {
+        this.id = builder.id;
+        this.title = builder.title;
+        this.description = builder.description;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate;
+        this.status = builder.status;
+        this.priority = builder.priority;
+        this.category = builder.category;
     }
 
     public int getId() {
@@ -93,5 +93,63 @@ public class Todo {
     @Override
     public String toString() {
         return getTitle();
+    }
+
+    public static class Builder {
+        private int id = -1;
+        private String title;
+        private String description;
+        private Date startDate;
+        private Date endDate;
+        private boolean status;
+        private Priority priority;
+        private Category category;
+
+        public Builder() {
+        }
+
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder startDate(Date startDate) {
+            this.startDate = startDate;
+            return this;
+        }
+
+        public Builder endDate(Date endDate) {
+            this.endDate = endDate;
+            return this;
+        }
+
+        public Builder status(boolean status) {
+            this.status = status;
+            return this;
+        }
+
+        public Builder priority(Priority priority) {
+            this.priority = priority;
+            return this;
+        }
+
+        public Builder category(Category category) {
+            this.category = category;
+            return this;
+        }
+
+        public Todo build() {
+            return new Todo(this);
+        }
     }
 }
