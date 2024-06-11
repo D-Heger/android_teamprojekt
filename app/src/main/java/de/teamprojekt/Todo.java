@@ -65,7 +65,7 @@ public class Todo {
         this.endDate = endDate;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

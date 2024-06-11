@@ -54,8 +54,6 @@ public class Character {
         return name;
     }
 
-    // Getters and Setters...
-
     public void setName(String name) {
         this.name = name;
     }

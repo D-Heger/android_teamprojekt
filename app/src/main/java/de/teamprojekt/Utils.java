@@ -6,6 +6,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.Date;
+
 public class Utils {
     public static void setNavBar(BottomNavigationView bottomNavigationView, Context context, int selectedItemId) {
         bottomNavigationView.setSelectedItemId(selectedItemId);
@@ -43,4 +45,14 @@ public class Utils {
         }
         return false;
     }
+
+    public static Date toDate(long date) {
+        return date == 0 ? null : new Date(date);
+    }
+
+    public static Long toTimestamp(Date date) {
+        return date == null ? 0 : date.getTime();
+    }
+
+
 }
