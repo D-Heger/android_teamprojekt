@@ -1,4 +1,4 @@
-package de.teamprojekt;
+package de.teamprojekt.Activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import de.teamprojekt.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

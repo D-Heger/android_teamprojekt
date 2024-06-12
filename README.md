@@ -197,7 +197,7 @@ better
 
 UI der TodoList/Items sollte noch überarbeitet werden
 
-Additional Goal: Swipe über die BottomNavigationBar; Confirmation Dialog für Löschen von Todos
+Additioernal Goal: Swipe üb die BottomNavigationBar; Confirmation Dialog für Löschen von Todos
 
 ## Plan für Donnerstag
 

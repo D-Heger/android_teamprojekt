@@ -1,4 +1,4 @@
-package de.teamprojekt;
+package de.teamprojekt.Activity;
 
 public class ResetActivity {
     /* TODO implement reset functionality. Should do:

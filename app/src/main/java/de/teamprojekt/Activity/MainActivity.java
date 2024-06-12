@@ -1,7 +1,7 @@
-package de.teamprojekt;
+package de.teamprojekt.Activity;
 
-import static de.teamprojekt.Utils.handleSelectedOption;
-import static de.teamprojekt.Utils.setNavBar;
+import static de.teamprojekt.Util.Utils.handleSelectedOption;
+import static de.teamprojekt.Util.Utils.setNavBar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +21,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Date;
 import java.util.List;
+
+import de.teamprojekt.Activity.Adapter.TodoAdapter;
+import de.teamprojekt.Entity.Enum.Category;
+import de.teamprojekt.Entity.Enum.Priority;
+import de.teamprojekt.Entity.Todo;
+import de.teamprojekt.R;
+import de.teamprojekt.Util.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity implements TodoAdapter.OnItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
     private RecyclerView todoListView;

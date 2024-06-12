@@ -1,6 +1,8 @@
-package de.teamprojekt;
+package de.teamprojekt.Entity.Enum;
 
 import androidx.annotation.NonNull;
+
+import de.teamprojekt.R;
 
 public enum Priority {
     LOW("Low", R.color.grey),

@@ -1,4 +1,4 @@
-package de.teamprojekt;
+package de.teamprojekt.Util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,13 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Date;
+
+import de.teamprojekt.Activity.CharacterActivity;
+import de.teamprojekt.Activity.DetailActivity;
+import de.teamprojekt.Activity.MainActivity;
+import de.teamprojekt.Activity.ResetActivity;
+import de.teamprojekt.Activity.SettingsActivity;
+import de.teamprojekt.R;
 
 public class Utils {
     public static void setNavBar(BottomNavigationView bottomNavigationView, Context context, int selectedItemId) {

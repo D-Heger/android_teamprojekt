@@ -1,7 +1,7 @@
-package de.teamprojekt;
+package de.teamprojekt.Activity;
 
-import static de.teamprojekt.Utils.handleSelectedOption;
-import static de.teamprojekt.Utils.setNavBar;
+import static de.teamprojekt.Util.Utils.handleSelectedOption;
+import static de.teamprojekt.Util.Utils.setNavBar;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import de.teamprojekt.R;
 
 public class DetailActivity extends AppCompatActivity {
 

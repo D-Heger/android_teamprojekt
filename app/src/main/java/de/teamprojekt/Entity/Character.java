@@ -1,4 +1,4 @@
-package de.teamprojekt;
+package de.teamprojekt.Entity;
 
 import androidx.annotation.NonNull;
 

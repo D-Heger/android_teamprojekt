@@ -1,8 +1,11 @@
-package de.teamprojekt;
+package de.teamprojekt.Entity;
 
 import androidx.annotation.NonNull;
 
 import java.sql.Date;
+
+import de.teamprojekt.Entity.Enum.Category;
+import de.teamprojekt.Entity.Enum.Priority;
 
 public class Todo {
     private int id = -1;

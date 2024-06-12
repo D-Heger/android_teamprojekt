@@ -1,12 +1,12 @@
-package de.teamprojekt;
+package de.teamprojekt.Util;
 
-import static de.teamprojekt.Category.categoryFromName;
-import static de.teamprojekt.DatabaseConstants.CharacterColumn;
-import static de.teamprojekt.DatabaseConstants.Table;
-import static de.teamprojekt.DatabaseConstants.TodoColumn;
-import static de.teamprojekt.Priority.priorityFromName;
-import static de.teamprojekt.Utils.toDate;
-import static de.teamprojekt.Utils.toTimestamp;
+import static de.teamprojekt.Entity.Enum.Category.categoryFromName;
+import static de.teamprojekt.Entity.Enum.Priority.priorityFromName;
+import static de.teamprojekt.Util.DatabaseConstants.CharacterColumn;
+import static de.teamprojekt.Util.DatabaseConstants.Table;
+import static de.teamprojekt.Util.DatabaseConstants.TodoColumn;
+import static de.teamprojekt.Util.Utils.toDate;
+import static de.teamprojekt.Util.Utils.toTimestamp;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -17,6 +17,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.teamprojekt.Entity.Character;
+import de.teamprojekt.Entity.Todo;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "todo_gamification.db";
