@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
 
         // TEST
         todoList = dbHelper.getAllTodos();
+        dbHelper.dropDatabase();
+        dbHelper = new DataBaseHelper(this);
         if (todoList.isEmpty()) {
             dbHelper.addTodo(new Todo.Builder()
                     .id(0)
