@@ -76,7 +76,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // TODO: Implement onUpgrade
     }
 
-    public void dropDatabase(SQLiteDatabase db) {
+    public void dropDatabase() {
         context.deleteDatabase(DATABASE_NAME);
     }
 
