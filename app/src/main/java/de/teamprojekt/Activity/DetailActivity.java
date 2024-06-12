@@ -62,13 +62,14 @@ public class DetailActivity extends AppCompatActivity {
 
         dbHelper = new DataBaseHelper(this);
 
+        // If an existing to-do item is being edited, populate the fields with its data
         if (getIntent().hasExtra("TODO_ID")) {
             int todoId = getIntent().getIntExtra("TODO_ID", -1);
             todo = dbHelper.getTodo(todoId);
             initVals();
         }
 
-        // Usage for start date button
+        // Set up start date button
         setupDatePickerButton(buttonStartDate, getInitialStartDate(), startDate, new DateValidator() {
             @Override
             public boolean isDateValid(Calendar date) {
@@ -86,7 +87,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        // Usage for end date button
+        // Set up end date button
         setupDatePickerButton(buttonEndDate, getInitialEndDate(), endDate, new DateValidator() {
             @Override
             public boolean isDateValid(Calendar date) {
@@ -104,8 +105,10 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
+        // Set up save and delete buttons
         buttonSave.setOnClickListener(v -> saveTodo());
+        buttonDelete.setOnClickListener(v -> deleteTodo());
+
         // Set up bottom navigation bar
         BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
         setNavBar(bnView, this, R.id.navigation_add);
@@ -133,7 +136,6 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
-    // Helper methods to get initial dates
     private Calendar getInitialStartDate() {
         Calendar startDateC = Calendar.getInstance();
         if (todo != null) {
@@ -173,8 +175,14 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             dbHelper.updateTodo(todo);
         }
+        finish();
+    }
 
-
+    private void deleteTodo() {
+        if (todo != null) {
+            dbHelper.deleteTodo(todo.getId());
+        }
+        finish();
     }
 
     @Override
