@@ -24,6 +24,7 @@
             android:defaultValue="@color/black"
             android:icon="@drawable/ic_baseline_invert_colors"/>
     </PreferenceCategory>
+
     <PreferenceCategory android:title="Todo Colors">
         <io.syslogic.colorpicker.ColorPickerPreference
             android:key="pref_color_not_completed"
@@ -38,4 +39,14 @@
             android:defaultValue="@color/green"
             android:icon="@drawable/ic_baseline_invert_colors"/>
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="Reset">
+        <Preference
+            android:key="pref_reset"
+            android:title="Reset Settings"
+            android:summary="Reset all settings to default"
+            android:icon="@drawable/ic_baseline_restore"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
 </androidx.preference.PreferenceScreen>
