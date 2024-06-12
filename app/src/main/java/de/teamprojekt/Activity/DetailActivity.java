@@ -3,6 +3,7 @@ package de.teamprojekt.Activity;
 import static de.teamprojekt.Util.Utils.handleSelectedOption;
 import static de.teamprojekt.Util.Utils.setNavBar;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,10 +67,89 @@ public class DetailActivity extends AppCompatActivity {
             todo = dbHelper.getTodo(todoId);
             initVals();
         }
+
+        // Usage for start date button
+        setupDatePickerButton(buttonStartDate, getInitialStartDate(), startDate, new DateValidator() {
+            @Override
+            public boolean isDateValid(Calendar date) {
+                return selectedEndDate == null || !date.after(selectedEndDate);
+            }
+
+            @Override
+            public String getErrorMessage() {
+                return "Start date cannot be after end date.";
+            }
+
+            @Override
+            public void updateSelectedDate(Calendar date) {
+                selectedStartDate = date;
+            }
+        });
+
+        // Usage for end date button
+        setupDatePickerButton(buttonEndDate, getInitialEndDate(), endDate, new DateValidator() {
+            @Override
+            public boolean isDateValid(Calendar date) {
+                return selectedStartDate == null || !date.before(selectedStartDate);
+            }
+
+            @Override
+            public String getErrorMessage() {
+                return "End date cannot be before start date.";
+            }
+
+            @Override
+            public void updateSelectedDate(Calendar date) {
+                selectedEndDate = date;
+            }
+        });
+
+
         buttonSave.setOnClickListener(v -> saveTodo());
         // Set up bottom navigation bar
         BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
         setNavBar(bnView, this, R.id.navigation_add);
+    }
+
+    public void setupDatePickerButton(Button button, Calendar initialDate, TextView dateTextView, DateValidator dateValidator) {
+        button.setOnClickListener(v -> {
+            int _year = initialDate.get(Calendar.YEAR);
+            int _month = initialDate.get(Calendar.MONTH);
+            int _day = initialDate.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePicker = new DatePickerDialog(DetailActivity.this, (view, year, month, dayOfMonth) -> {
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.clear();
+                selectedDate.set(year, month, dayOfMonth);
+
+                if (!dateValidator.isDateValid(selectedDate)) {
+                    Toast.makeText(DetailActivity.this, dateValidator.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    dateValidator.updateSelectedDate(selectedDate);
+                    dateTextView.setText(dateFormat.format(selectedDate.getTime()));
+                }
+            }, _year, _month, _day);
+            datePicker.show();
+        });
+    }
+
+    // Helper methods to get initial dates
+    private Calendar getInitialStartDate() {
+        Calendar startDateC = Calendar.getInstance();
+        if (todo != null) {
+            startDateC.set(todo.getStartDate().getYear() + 1900, todo.getStartDate().getMonth(), todo.getStartDate().getDate());
+        }
+        return startDateC;
+    }
+
+    private Calendar getInitialEndDate() {
+        Calendar endDateC = Calendar.getInstance();
+        if (todo != null) {
+            endDateC.set(todo.getEndDate().getYear() + 1900, todo.getEndDate().getMonth(), todo.getEndDate().getDate());
+        } else {
+            endDateC.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        return endDateC;
     }
 
     private void initVals() {
@@ -108,5 +189,13 @@ public class DetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public interface DateValidator {
+        boolean isDateValid(Calendar date);
+
+        String getErrorMessage();
+
+        void updateSelectedDate(Calendar date);
     }
 }
