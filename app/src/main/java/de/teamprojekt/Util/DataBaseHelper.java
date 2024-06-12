@@ -139,13 +139,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean updateCharacter(CharacterColumn column, String value) {
+    public boolean updateCharacterOneValue(CharacterColumn column, String value) {
         return update(Table.CHARACTER_TABLE.toString(), column.toString(), value, CharacterColumn.ID + " = 1");
     }
 
+    public boolean updateCharacter(Character character) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.update(Table.CHARACTER_TABLE.toString(), characterToContentValues(character), CharacterColumn.ID + " = 1", null);
+        db.close();
+        return result != -1;
+    }
 
-    public boolean updateTodo(TodoColumn column, String value, int id) {
+
+    public boolean updateTodoOneValue(TodoColumn column, String value, int id) {
         return update(Table.TODO_TABLE.toString(), column.toString(), value, TodoColumn.ID + " = " + id);
+    }
+
+    public boolean updateTodo(Todo todo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.update(Table.TODO_TABLE.toString(), todoToContentValues(todo), TodoColumn.ID + " = " + todo.getId(), null);
+        db.close();
+        return result != -1;
     }
 
     public boolean deleteTodo(int id) {
@@ -230,6 +244,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     private Todo cursorToTodo(Cursor cursor) {
         return new Todo.Builder()
+                .id(cursor.getInt(cursor.getColumnIndex(TodoColumn.ID.toString())))
                 .title(cursor.getString(cursor.getColumnIndex(TodoColumn.TITLE.toString())))
                 .description(cursor.getString(cursor.getColumnIndex(TodoColumn.DESCRIPTION.toString())))
                 .startDate(toDate(cursor.getLong(cursor.getColumnIndex(TodoColumn.START_DATE.toString()))))

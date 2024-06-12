@@ -8,7 +8,7 @@ import de.teamprojekt.Entity.Enum.Category;
 import de.teamprojekt.Entity.Enum.Priority;
 
 public class Todo {
-    private int id = -1;
+    private int id;
     private String title;
     private String description;
     private Date startDate;
@@ -26,6 +26,13 @@ public class Todo {
         this.status = builder.status;
         this.priority = builder.priority;
         this.category = builder.category;
+    }
+
+    /**
+     * Only Use with care
+     **/
+    public Todo() {
+
     }
 
     public int getId() {
