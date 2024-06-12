@@ -52,6 +52,10 @@ public class Utils {
         }
         return false;
     }
+    
+    public static java.sql.Date toSqlDate(java.util.Date date) {
+        return date == null ? null : new java.sql.Date(date.getTime());
+    }
 
     public static Date toDate(long date) {
         return date == 0 ? null : new Date(date);

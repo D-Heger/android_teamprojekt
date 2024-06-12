@@ -177,27 +177,28 @@ Datenbank für Todo und Character
 
 Main Goal: Activitys mit Datenbank verbinden
 Secondary Goal: Preferences beachten (Farben, Schriftgröße) - mostly done, just need to apply colors
-better
+better -> Morgen
 
 - MainActivty
-    - Liste befüllen - Done
+    - Liste befüllen - Done, wird noch nicht richtig aktualisiert -> Morgen
     - Swipe to delete - Done
     - Click to edit - Done
 - DetailActivity
-    - Speichern des Todos in der DB
-    - Löschen des Todos in der DB
-    - Editieren des Todos in der DB
+    - Speichern des Todos in der DB - Done
+    - Löschen des Todos in der DB - Done
+    - Editieren des Todos in der DB - Done
 - CharacterActivity
-    - Werte aus der DB holen/anzeigen
+    - Werte aus der DB holen/anzeigen -> Morgen
 - SettingsActivity
     - Preferences setzen - Done (i think)
     - Preferences speichern - Done
     - Preferences anwenden - siehe oben
     - Preferences zurücksetzen - Done
 
-UI der TodoList/Items sollte noch überarbeitet werden
+UI der TodoList/Items sollte noch überarbeitet werden -> Morgen
 
-Additioernal Goal: Swipe üb die BottomNavigationBar; Confirmation Dialog für Löschen von Todos
+Additioernal Goal: Swipe üb die BottomNavigationBar; Confirmation Dialog für Löschen von Todos ->
+Vielleicht später
 
 ## Plan für Donnerstag
 

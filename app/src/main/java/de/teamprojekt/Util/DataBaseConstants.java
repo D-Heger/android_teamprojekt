@@ -2,7 +2,7 @@ package de.teamprojekt.Util;
 
 import androidx.annotation.NonNull;
 
-public class DatabaseConstants {
+public class DataBaseConstants {
     public enum Table {
         TODO_TABLE("TODO_TABLE"),
         CHARACTER_TABLE("CHARACTER_TABLE");

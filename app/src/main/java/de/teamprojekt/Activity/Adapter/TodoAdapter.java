@@ -31,6 +31,12 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
         this.todoList = todoList;
         this.onClickListener = onClickListener;
     }
+    
+    public void setTodoList(List<Todo> todoList) {
+        this.todoList.clear();
+        this.todoList.addAll(todoList);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

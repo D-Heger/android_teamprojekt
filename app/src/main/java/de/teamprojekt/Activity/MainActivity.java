@@ -28,8 +28,9 @@ import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
 import de.teamprojekt.R;
 import de.teamprojekt.Util.DataBaseHelper;
+import de.teamprojekt.Util.DataBaseListener;
 
-public class MainActivity extends AppCompatActivity implements TodoAdapter.OnItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends AppCompatActivity implements TodoAdapter.OnItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener, DataBaseListener.TodoChangeListener {
     private RecyclerView todoListView;
     private TodoAdapter todoAdapter;
     private DataBaseHelper dbHelper;
@@ -49,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         todoListView = findViewById(R.id.recyclerView);
         dbHelper = new DataBaseHelper(this);
 
+        // Register this activity as a TodoChangeListener
+        dbHelper.addTodoChangeListener(this);
+
         // TEST
         todoList = dbHelper.getAllTodos();
-        dbHelper.dropDatabase();
-        dbHelper = new DataBaseHelper(this);
         if (todoList.isEmpty()) {
             dbHelper.addTodo(new Todo.Builder()
                     .id(0)
@@ -170,5 +172,20 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
     protected void onDestroy() {
         super.onDestroy();
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onTodoAdded(Todo todo) {
+        todoAdapter.setTodoList(dbHelper.getAllTodos());
+    }
+
+    @Override
+    public void onTodoDeleted(int todoId) {
+        todoAdapter.setTodoList(dbHelper.getAllTodos());
+    }
+
+    @Override
+    public void onTodoUpdated(Todo todo) {
+        todoAdapter.setTodoList(dbHelper.getAllTodos());
     }
 }
