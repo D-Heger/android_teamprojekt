@@ -1,5 +1,6 @@
 package de.teamprojekt.Activity;
 
+import static de.teamprojekt.Util.LevelCalculator.calculateProgress;
 import static de.teamprojekt.Util.Utils.handleSelectedOption;
 import static de.teamprojekt.Util.Utils.setNavBar;
 
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -70,12 +72,13 @@ public class CharacterActivity extends AppCompatActivity {
         characterLuck = findViewById(R.id.tvLuck);
         characterLuckExp = findViewById(R.id.pbLuck);
 
-        // Prepare progress bars
-        prepareProgressBars();
 
         // Get character from database
         dbHelper = new DataBaseHelper(this);
         character = dbHelper.getCharacter();
+        // Prepare progress bars
+        prepareProgressBars();
+        // Initialize values
         initValues();
 
         // Set up bottom navigation bar
@@ -84,7 +87,14 @@ public class CharacterActivity extends AppCompatActivity {
     }
 
     private void prepareProgressBars() {
-        // TODO set max values of progress bar according to the cost of the next level
+//        characterExp.setMax(calculateLevelCost(character.getLevel()));
+//        characterStrengthExp.setMax(calculateLevelCost(character.getStrength()));
+//        characterPerceptionExp.setMax(calculateLevelCost(character.getPerception()));
+//        characterEnduranceExp.setMax(calculateLevelCost(character.getEndurance()));
+//        characterCharismaExp.setMax(calculateLevelCost(character.getCharisma()));
+//        characterIntelligenceExp.setMax(calculateLevelCost(character.getIntelligence()));
+//        characterAgilityExp.setMax(calculateLevelCost(character.getAgility()));
+//        characterLuckExp.setMax(calculateLevelCost(character.getLuck()));
     }
 
     private void initValues() {
@@ -93,21 +103,21 @@ public class CharacterActivity extends AppCompatActivity {
         characterAge.setText(String.valueOf(character.getAge()));
         characterGender.setText(character.getGender());
         characterLevel.setText(getString(R.string.default_level, character.getLevel()));
-        characterExp.setProgress(character.getExperience());
+        characterExp.setProgress(calculateProgress(character.getLevel(), character.getExperience()));
         characterStrength.setText(String.valueOf(character.getStrength()));
-        characterStrengthExp.setProgress(character.getStrengthExp());
+        characterStrengthExp.setProgress(calculateProgress(character.getStrength(), character.getStrengthExp()));
         characterPerception.setText(String.valueOf(character.getPerception()));
-        characterPerceptionExp.setProgress(character.getPerceptionExp());
+        characterPerceptionExp.setProgress(calculateProgress(character.getPerception(), character.getPerceptionExp()));
         characterEndurance.setText(String.valueOf(character.getEndurance()));
-        characterEnduranceExp.setProgress(character.getEnduranceExp());
+        characterEnduranceExp.setProgress(calculateProgress(character.getEndurance(), character.getEnduranceExp()));
         characterCharisma.setText(String.valueOf(character.getCharisma()));
-        characterCharismaExp.setProgress(character.getCharismaExp());
+        characterCharismaExp.setProgress(calculateProgress(character.getCharisma(), character.getCharismaExp()));
         characterIntelligence.setText(String.valueOf(character.getIntelligence()));
-        characterIntelligenceExp.setProgress(character.getIntelligenceExp());
+        characterIntelligenceExp.setProgress(calculateProgress(character.getIntelligence(), character.getIntelligenceExp()));
         characterAgility.setText(String.valueOf(character.getAgility()));
-        characterAgilityExp.setProgress(character.getAgilityExp());
+        characterAgilityExp.setProgress(calculateProgress(character.getAgility(), character.getAgilityExp()));
         characterLuck.setText(String.valueOf(character.getLuck()));
-        characterLuckExp.setProgress(character.getLuckExp());
+        characterLuckExp.setProgress(calculateProgress(character.getLuck(), character.getLuckExp()));
     }
 
     @Override
@@ -117,7 +127,7 @@ public class CharacterActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (handleSelectedOption(this, item)) {
             return true;
         }

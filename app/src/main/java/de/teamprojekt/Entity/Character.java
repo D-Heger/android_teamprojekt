@@ -27,6 +27,12 @@ public class Character {
     private int luck;
     private int luckExp;
 
+    /**
+     * ONLY USE WHEN YOU KNOW WHAT YOU ARE DOING
+     */
+    public Character() {
+    }
+
     private Character(Builder builder) {
         this.name = builder.name;
         this.age = builder.age;

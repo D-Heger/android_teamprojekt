@@ -1,4 +1,4 @@
-package de.teamprojekt.Util;
+package de.teamprojekt.Util.Constants;
 
 import androidx.annotation.NonNull;
 

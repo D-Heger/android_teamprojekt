@@ -6,6 +6,7 @@ import static de.teamprojekt.Util.Utils.setNavBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
@@ -91,12 +92,32 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         }
 
         // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
-//        if (dbHelper.getCharacter() == null) {
-//            dbHelper.addCharacter(new Character.Builder()
-//                            .icon(R.drawable.ic)
-//                    .build()
-//            );
-//        }
+        dbHelper.deleteCharacter();
+        if (!dbHelper.addCharacter(new Character.Builder()
+                .name("Red Guy")
+                .age(28)
+                .gender("RED")
+                .icon(R.drawable.male1)
+                .level(120)
+                .experience(500000)
+                .strength(10)
+                .strength_exp(100)
+                .perception(10)
+                .perception_exp(100)
+                .endurance(10)
+                .endurance_exp(100)
+                .charisma(10)
+                .charisma_exp(100)
+                .intelligence(10)
+                .intelligence_exp(100)
+                .agility(10)
+                .agility_exp(100)
+                .luck(10)
+                .luck_exp(100)
+                .build()
+        )) {
+            Log.e("MainActivity", "Failed to add character");
+        }
 
         // Load To-do items from the database and fill the adapter
         todoList = dbHelper.getAllTodos();

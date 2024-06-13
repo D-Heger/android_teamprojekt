@@ -188,7 +188,7 @@ better -> Morgen
     - Löschen des Todos in der DB - Done
     - Editieren des Todos in der DB - Done
 - CharacterActivity
-    - Werte aus der DB holen/anzeigen -> Morgen
+    - Werte aus der DB holen/anzeigen -> Morgen - Done
 - SettingsActivity
     - Preferences setzen - Done (i think)
     - Preferences speichern - Done
@@ -202,6 +202,7 @@ Vielleicht später
 
 ## Plan für Donnerstag
 
-Berechnung der Level und Experience
+Berechnung der Level und Experience - Done
+Berechnung der Experience pro Todo
 Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung; Dialog für Reset + Reset
 Funktion per SettingsMenu

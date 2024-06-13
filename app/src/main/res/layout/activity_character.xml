@@ -84,7 +84,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:progressDrawable="@drawable/material_progress_bar" />
             </LinearLayout>
 
             <!-- Attributes -->
@@ -120,7 +121,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Perception -->
                 <LinearLayout
@@ -149,7 +151,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Endurance -->
                 <LinearLayout
@@ -178,7 +181,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Charisma -->
                 <LinearLayout
@@ -207,7 +211,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Intelligence -->
                 <LinearLayout
@@ -236,7 +241,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Agility -->
                 <LinearLayout
@@ -265,7 +271,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
                 <!-- Luck -->
                 <LinearLayout
@@ -294,7 +301,8 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:progressDrawable="@drawable/material_progress_bar" />/>
 
             </LinearLayout>
 

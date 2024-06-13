@@ -2,9 +2,9 @@ package de.teamprojekt.Util;
 
 import static de.teamprojekt.Entity.Enum.Category.categoryFromName;
 import static de.teamprojekt.Entity.Enum.Priority.priorityFromName;
-import static de.teamprojekt.Util.DataBaseConstants.CharacterColumn;
-import static de.teamprojekt.Util.DataBaseConstants.Table;
-import static de.teamprojekt.Util.DataBaseConstants.TodoColumn;
+import static de.teamprojekt.Util.Constants.DataBaseConstants.CharacterColumn;
+import static de.teamprojekt.Util.Constants.DataBaseConstants.Table;
+import static de.teamprojekt.Util.Constants.DataBaseConstants.TodoColumn;
 import static de.teamprojekt.Util.Utils.toDate;
 import static de.teamprojekt.Util.Utils.toTimestamp;
 
@@ -101,13 +101,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Character getCharacter() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Table.CHARACTER_TABLE, null);
-        Character.Builder character = new Character.Builder();
+        Character character = new Character();
         if (cursor.moveToFirst()) {
             character = cursorToCharacter(cursor);
         }
         cursor.close();
         db.close();
-        return character.build();
+        return character;
     }
 
     @SuppressLint("Range")
@@ -160,6 +160,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long result = db.update(Table.TODO_TABLE.toString(), todoToContentValues(todo), TodoColumn.ID + " = " + todo.getId(), null);
         db.close();
         return result != -1;
+    }
+
+    public boolean deleteCharacter() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + Table.CHARACTER_TABLE);
+        db.execSQL(SQL_CREATE_CHARACTER_TABLE);
+        db.close();
+        return true;
     }
 
     public boolean deleteTodo(int id) {
@@ -217,7 +225,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    private Character.Builder cursorToCharacter(Cursor cursor) {
+    private Character cursorToCharacter(Cursor cursor) {
         return new Character.Builder()
                 .name(cursor.getString(cursor.getColumnIndex(CharacterColumn.NAME.toString())))
                 .age(cursor.getInt(cursor.getColumnIndex(CharacterColumn.AGE.toString())))
@@ -238,7 +246,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 .agility(cursor.getInt(cursor.getColumnIndex(CharacterColumn.AGILITY.toString())))
                 .agility_exp(cursor.getInt(cursor.getColumnIndex(CharacterColumn.AGILITY_EXP.toString())))
                 .luck(cursor.getInt(cursor.getColumnIndex(CharacterColumn.LUCK.toString())))
-                .luck_exp(cursor.getInt(cursor.getColumnIndex(CharacterColumn.LUCK_EXP.toString())));
+                .luck_exp(cursor.getInt(cursor.getColumnIndex(CharacterColumn.LUCK_EXP.toString())))
+                .build();
     }
 
     @SuppressLint("Range")
