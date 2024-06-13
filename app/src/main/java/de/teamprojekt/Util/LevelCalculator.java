@@ -6,6 +6,7 @@ import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_LOW_PRIORIT
 import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_MEDIUM_PRIORITY;
 import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_MUL;
 import static de.teamprojekt.Util.Constants.CalculationConstants.INITIAL_EXP;
+import static de.teamprojekt.Util.ExperienceCalculator.updateSkill;
 
 import de.teamprojekt.Entity.Character;
 import de.teamprojekt.Entity.Enum.Skill;
@@ -38,12 +39,7 @@ public class LevelCalculator {
         int tmpSkillExp;
         switch (type) {
             case STRENGTH:
-                character.setStrengthExp(character.getStrengthExp() + exp);
-                tmpSkillExp = character.getStrengthExp();
-                if (tmpSkillExp >= calculateLevelCost(character.getStrength())) {
-                    character.setStrength(character.getStrength() + 1);
-                    character.setStrengthExp(tmpSkillExp - calculateLevelCost(character.getStrength()));
-                }
+                updateSkill(character, Skill.STRENGTH, exp);
                 break;
             case PERCEPTION:
                 character.setPerceptionExp(character.getPerceptionExp() + exp);
