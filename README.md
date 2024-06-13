@@ -209,3 +209,4 @@ Funktion per SettingsMenu
 
 Wenn Todo Erledigt => nicht sichtbar in MainActivity
 Suche Einbauen und Filter Hinzufügen ?
+ADD unter Settings eine Archive Activity zum alle Todos ohne onClick
