@@ -185,6 +185,7 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             dbHelper.updateTodo(todo);
         }
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -192,6 +193,7 @@ public class DetailActivity extends AppCompatActivity {
         if (todo != null) {
             dbHelper.deleteTodo(todo.getId());
         }
+        setResult(RESULT_OK);
         finish();
     }
 

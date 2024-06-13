@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -30,6 +31,7 @@ import de.teamprojekt.R;
 import de.teamprojekt.Util.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity implements TodoAdapter.OnItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+    private static final int REQUEST_CODE = 1;
     private TodoAdapter todoAdapter;
     private RecyclerView todoListView;
     private DataBaseHelper dbHelper;
@@ -140,7 +142,21 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
 
     @Override
     public void onItemClick(int position) {
-        startActivity(new Intent(this, DetailActivity.class).putExtra("TODO_ID", todoList.get(position).getId()));
+        startActivityForResult(new Intent(this, DetailActivity.class).putExtra("TODO_ID", todoList.get(position).getId()), REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            refreshTodoList();
+        }
+    }
+
+    private void refreshTodoList() {
+        todoList.clear();
+        todoList.addAll(dbHelper.getAllTodos());
+        todoAdapter.notifyDataSetChanged();
     }
 
     private void onTodoSwipe(int position) {
