@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
 
         // Apply preferences
         RelativeLayout layout = findViewById(R.id.main);
-        layout.setBackgroundColor(getResources().getColor(backgroundColor));
+        layout.setBackgroundColor(getResources().getColor(backgroundColor, null));
         todoAdapter.applyPreferences(fontSize, textColor, notCompletedColor, completedColor);
     }
 

@@ -125,6 +125,9 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             tvStartDate.setTextColor(textColor);
             tvDueDate.setTextColor(textColor);
 
+            // Set priority background color
+            tvPriority.setBackgroundColor(todo.getPriority().getColor());
+
             // Completed status color
             tvStatus.setBackgroundColor(todo.getStatus() ? completedColor : notCompletedColor);
 
