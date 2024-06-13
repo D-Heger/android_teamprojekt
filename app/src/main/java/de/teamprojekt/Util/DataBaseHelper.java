@@ -126,6 +126,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
+    public List<Todo> getAllNonCompletedTodos() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Todo> todos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Table.TODO_TABLE + " WHERE " + TodoColumn.STATUS + " = 0 ", null);
+        if (cursor.moveToFirst()) {
+            do {
+                todos.add(cursorToTodo(cursor));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return todos;
+    }
+
+    @SuppressLint("Range")
     public Todo getTodo(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Table.TODO_TABLE + " WHERE " + TodoColumn.ID + " = " + id, null);

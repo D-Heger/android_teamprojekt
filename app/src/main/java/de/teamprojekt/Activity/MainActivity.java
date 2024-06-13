@@ -53,8 +53,9 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         todoListView = findViewById(R.id.recyclerView);
         dbHelper = new DataBaseHelper(this);
 
+        // FIXME: REMOVE THIS
         // ADDING TODOS FOR TESTING PURPOSES IF TODO TABLE IS EMPTY
-        todoList = dbHelper.getAllTodos();
+        todoList = dbHelper.getAllNonCompletedTodos();
         if (todoList.isEmpty()) {
             dbHelper.addTodo(new Todo.Builder()
                     .id(0)
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
             );
         }
 
+        // FIXME: REMOVE THIS
         // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
         if (dbHelper.getCharacter() == null) {
             if (!dbHelper.addCharacter(new Character.Builder()
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         }
 
         // Load To-do items from the database and fill the adapter
-        todoList = dbHelper.getAllTodos();
+        todoList = dbHelper.getAllNonCompletedTodos();
         todoAdapter = new TodoAdapter(todoList, this);
 
         // Set the adapter for the RecyclerView
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
 
     private void refreshTodoList() {
         todoList.clear();
-        todoList.addAll(dbHelper.getAllTodos());
+        todoList.addAll(dbHelper.getAllNonCompletedTodos());
         todoAdapter.notifyDataSetChanged();
     }
 
