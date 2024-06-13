@@ -206,3 +206,6 @@ Berechnung der Level und Experience - Done
 Berechnung der Experience pro Todo
 Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung; Dialog für Reset + Reset
 Funktion per SettingsMenu
+
+Wenn Todo Erledigt => nicht sichtbar in MainActivity
+Suche Einbauen und Filter Hinzufügen ?
