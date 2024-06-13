@@ -171,7 +171,7 @@ public class DetailActivity extends AppCompatActivity {
         if (todo == null) {
             todo = new Todo();
         }
-        
+
         todo.setTitle(titleDetail.getText().toString());
         todo.setDescription(descriptionDetail.getText().toString());
         todo.setStatus(checkBox.isChecked());

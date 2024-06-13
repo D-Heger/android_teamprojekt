@@ -60,37 +60,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Context context;
 
-    private List<DataBaseListener.TodoChangeListener> listeners = new ArrayList<>();
-
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
-    }
-
-    public void addTodoChangeListener(DataBaseListener.TodoChangeListener listener) {
-        listeners.add(listener);
-    }
-
-    public void removeTodoChangeListener(DataBaseListener.TodoChangeListener listener) {
-        listeners.remove(listener);
-    }
-
-    private void notifyTodoAdded(Todo todo) {
-        for (DataBaseListener.TodoChangeListener listener : listeners) {
-            listener.onTodoAdded(todo);
-        }
-    }
-
-    private void notifyTodoDeleted(int todoId) {
-        for (DataBaseListener.TodoChangeListener listener : listeners) {
-            listener.onTodoDeleted(todoId);
-        }
-    }
-
-    private void notifyTodoUpdated(Todo todo) {
-        for (DataBaseListener.TodoChangeListener listener : listeners) {
-            listener.onTodoUpdated(todo);
-        }
     }
 
     @Override
@@ -121,9 +93,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = todoToContentValues(todo);
         long result = db.insert(Table.TODO_TABLE.toString(), null, values);
         db.close();
-        if (result != -1) {
-            notifyTodoAdded(todo);
-        }
         return result != -1;
     }
 
@@ -190,9 +159,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.update(Table.TODO_TABLE.toString(), todoToContentValues(todo), TodoColumn.ID + " = " + todo.getId(), null);
         db.close();
-        if (result != -1) {
-            notifyTodoUpdated(todo);
-        }
         return result != -1;
     }
 
@@ -201,9 +167,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String whereClause = TodoColumn.ID + " = " + id;
         long result = db.delete(Table.TODO_TABLE.toString(), whereClause, null);
         db.close();
-        if (result != -1) {
-            notifyTodoDeleted(id);
-        }
         return result != -1;
     }
 
