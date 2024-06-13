@@ -211,6 +211,9 @@ public class DetailActivity extends AppCompatActivity {
             dbHelper.deleteTodo(todo.getId());
         }
         setResult(RESULT_OK);
+        // Bottom nav bar should have list selected when returning to main activity
+        BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
+        setNavBar(bnView, this, R.id.navigation_list);
         finish();
     }
 
