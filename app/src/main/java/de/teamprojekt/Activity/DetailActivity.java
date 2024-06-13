@@ -174,13 +174,28 @@ public class DetailActivity extends AppCompatActivity {
             todo = new Todo();
         }
 
-        todo.setTitle(titleDetail.getText().toString());
-        todo.setDescription(descriptionDetail.getText().toString());
-        todo.setStatus(checkBox.isChecked());
-        todo.setStartDate(toSqlDate(selectedStartDate.getTime()));
-        todo.setEndDate(toSqlDate(selectedEndDate.getTime()));
-        todo.setPriority((Priority) priorityDetail.getSelectedItem());
-        todo.setCategory((Category) categoryDetail.getSelectedItem());
+        String title = titleDetail.getText().toString();
+        String description = descriptionDetail.getText();
+        boolean status = checkBox.isChecked();
+        Calendar startDate = selectedStartDate;
+        Calendar endDate = selectedEndDate;
+        Priority priority = (Priority) priorityDetail.getSelectedItem();
+        Category category = (Category) categoryDetail.getSelectedItem();
+
+        // Check if all values are present
+        if (title.isEmpty() || description.isEmpty() || startDate == null || endDate == null || priority == null || category == null) {
+            // Show an error message to the user
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        todo.setTitle(title);
+        todo.setDescription(description);
+        todo.setStatus(status);
+        todo.setStartDate(toSqlDate(startDate.getTime()));
+        todo.setEndDate(toSqlDate(endDate.getTime()));
+        todo.setPriority(priority);
+        todo.setCategory(category);
 
         if (todo.getId() == -1) {
             dbHelper.addTodo(todo);
