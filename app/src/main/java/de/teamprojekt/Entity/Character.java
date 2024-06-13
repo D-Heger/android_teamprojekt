@@ -13,19 +13,19 @@ public class Character {
 
     // stats
     private int strength;
-    private int strength_exp;
+    private int strengthExp;
     private int perception;
-    private int perception_exp;
+    private int perceptionExp;
     private int endurance;
-    private int endurance_exp;
+    private int enduranceExp;
     private int charisma;
-    private int charisma_exp;
+    private int charismaExp;
     private int intelligence;
-    private int intelligence_exp;
+    private int intelligenceExp;
     private int agility;
-    private int agility_exp;
+    private int agilityExp;
     private int luck;
-    private int luck_exp;
+    private int luckExp;
 
     private Character(Builder builder) {
         this.name = builder.name;
@@ -35,19 +35,19 @@ public class Character {
         this.level = builder.level;
         this.experience = builder.experience;
         this.strength = builder.strength;
-        this.strength_exp = builder.strength_exp;
+        this.strengthExp = builder.strength_exp;
         this.perception = builder.perception;
-        this.perception_exp = builder.perception_exp;
+        this.perceptionExp = builder.perception_exp;
         this.endurance = builder.endurance;
-        this.endurance_exp = builder.endurance_exp;
+        this.enduranceExp = builder.endurance_exp;
         this.charisma = builder.charisma;
-        this.charisma_exp = builder.charisma_exp;
+        this.charismaExp = builder.charisma_exp;
         this.intelligence = builder.intelligence;
-        this.intelligence_exp = builder.intelligence_exp;
+        this.intelligenceExp = builder.intelligence_exp;
         this.agility = builder.agility;
-        this.agility_exp = builder.agility_exp;
+        this.agilityExp = builder.agility_exp;
         this.luck = builder.luck;
-        this.luck_exp = builder.luck_exp;
+        this.luckExp = builder.luck_exp;
     }
 
     public String getName() {
@@ -106,12 +106,12 @@ public class Character {
         this.strength = strength;
     }
 
-    public int getStrength_exp() {
-        return strength_exp;
+    public int getStrengthExp() {
+        return strengthExp;
     }
 
-    public void setStrength_exp(int strength_exp) {
-        this.strength_exp = strength_exp;
+    public void setStrengthExp(int strengthExp) {
+        this.strengthExp = strengthExp;
     }
 
     public int getPerception() {
@@ -122,12 +122,12 @@ public class Character {
         this.perception = perception;
     }
 
-    public int getPerception_exp() {
-        return perception_exp;
+    public int getPerceptionExp() {
+        return perceptionExp;
     }
 
-    public void setPerception_exp(int perception_exp) {
-        this.perception_exp = perception_exp;
+    public void setPerceptionExp(int perceptionExp) {
+        this.perceptionExp = perceptionExp;
     }
 
     public int getEndurance() {
@@ -138,12 +138,12 @@ public class Character {
         this.endurance = endurance;
     }
 
-    public int getEndurance_exp() {
-        return endurance_exp;
+    public int getEnduranceExp() {
+        return enduranceExp;
     }
 
-    public void setEndurance_exp(int endurance_exp) {
-        this.endurance_exp = endurance_exp;
+    public void setEnduranceExp(int enduranceExp) {
+        this.enduranceExp = enduranceExp;
     }
 
     public int getCharisma() {
@@ -154,12 +154,12 @@ public class Character {
         this.charisma = charisma;
     }
 
-    public int getCharisma_exp() {
-        return charisma_exp;
+    public int getCharismaExp() {
+        return charismaExp;
     }
 
-    public void setCharisma_exp(int charisma_exp) {
-        this.charisma_exp = charisma_exp;
+    public void setCharismaExp(int charismaExp) {
+        this.charismaExp = charismaExp;
     }
 
     public int getIntelligence() {
@@ -170,12 +170,12 @@ public class Character {
         this.intelligence = intelligence;
     }
 
-    public int getIntelligence_exp() {
-        return intelligence_exp;
+    public int getIntelligenceExp() {
+        return intelligenceExp;
     }
 
-    public void setIntelligence_exp(int intelligence_exp) {
-        this.intelligence_exp = intelligence_exp;
+    public void setIntelligenceExp(int intelligenceExp) {
+        this.intelligenceExp = intelligenceExp;
     }
 
     public int getAgility() {
@@ -186,12 +186,12 @@ public class Character {
         this.agility = agility;
     }
 
-    public int getAgility_exp() {
-        return agility_exp;
+    public int getAgilityExp() {
+        return agilityExp;
     }
 
-    public void setAgility_exp(int agility_exp) {
-        this.agility_exp = agility_exp;
+    public void setAgilityExp(int agilityExp) {
+        this.agilityExp = agilityExp;
     }
 
     public int getLuck() {
@@ -202,12 +202,12 @@ public class Character {
         this.luck = luck;
     }
 
-    public int getLuck_exp() {
-        return luck_exp;
+    public int getLuckExp() {
+        return luckExp;
     }
 
-    public void setLuck_exp(int luck_exp) {
-        this.luck_exp = luck_exp;
+    public void setLuckExp(int luckExp) {
+        this.luckExp = luckExp;
     }
 
     @NonNull

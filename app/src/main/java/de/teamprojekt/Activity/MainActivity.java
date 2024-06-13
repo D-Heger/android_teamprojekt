@@ -24,6 +24,7 @@ import java.sql.Date;
 import java.util.List;
 
 import de.teamprojekt.Activity.Adapter.TodoAdapter;
+import de.teamprojekt.Entity.Character;
 import de.teamprojekt.Entity.Enum.Category;
 import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         todoListView = findViewById(R.id.recyclerView);
         dbHelper = new DataBaseHelper(this);
 
-        // TEST
+        // ADDING TODOS FOR TESTING PURPOSES IF TODO TABLE IS EMPTY
         todoList = dbHelper.getAllTodos();
         if (todoList.isEmpty()) {
             dbHelper.addTodo(new Todo.Builder()
@@ -88,6 +89,14 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
                     .build()
             );
         }
+
+        // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
+//        if (dbHelper.getCharacter() == null) {
+//            dbHelper.addCharacter(new Character.Builder()
+//                            .icon(R.drawable.ic)
+//                    .build()
+//            );
+//        }
 
         // Load To-do items from the database and fill the adapter
         todoList = dbHelper.getAllTodos();

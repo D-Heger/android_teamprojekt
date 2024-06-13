@@ -188,19 +188,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(CharacterColumn.LEVEL.toString(), character.getLevel());
         values.put(CharacterColumn.EXP.toString(), character.getExperience());
         values.put(CharacterColumn.STRENGTH.toString(), character.getStrength());
-        values.put(CharacterColumn.STRENGTH_EXP.toString(), character.getStrength_exp());
+        values.put(CharacterColumn.STRENGTH_EXP.toString(), character.getStrengthExp());
         values.put(CharacterColumn.PERCEPTION.toString(), character.getPerception());
-        values.put(CharacterColumn.PERCEPTION_EXP.toString(), character.getPerception_exp());
+        values.put(CharacterColumn.PERCEPTION_EXP.toString(), character.getPerceptionExp());
         values.put(CharacterColumn.ENDURANCE.toString(), character.getEndurance());
-        values.put(CharacterColumn.ENDURANCE_EXP.toString(), character.getEndurance_exp());
+        values.put(CharacterColumn.ENDURANCE_EXP.toString(), character.getEnduranceExp());
         values.put(CharacterColumn.CHARISMA.toString(), character.getCharisma());
-        values.put(CharacterColumn.CHARISMA_EXP.toString(), character.getCharisma_exp());
+        values.put(CharacterColumn.CHARISMA_EXP.toString(), character.getCharismaExp());
         values.put(CharacterColumn.INTELLIGENCE.toString(), character.getIntelligence());
-        values.put(CharacterColumn.INTELLIGENCE_EXP.toString(), character.getIntelligence_exp());
+        values.put(CharacterColumn.INTELLIGENCE_EXP.toString(), character.getIntelligenceExp());
         values.put(CharacterColumn.AGILITY.toString(), character.getAgility());
-        values.put(CharacterColumn.AGILITY_EXP.toString(), character.getAgility_exp());
+        values.put(CharacterColumn.AGILITY_EXP.toString(), character.getAgilityExp());
         values.put(CharacterColumn.LUCK.toString(), character.getLuck());
-        values.put(CharacterColumn.LUCK_EXP.toString(), character.getLuck_exp());
+        values.put(CharacterColumn.LUCK_EXP.toString(), character.getLuckExp());
         return values;
     }
 
