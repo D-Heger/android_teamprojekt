@@ -1,5 +1,6 @@
 package de.teamprojekt.Activity;
 
+import static de.teamprojekt.Util.LevelCalculator.calculateLevel;
 import static de.teamprojekt.Util.Utils.handleSelectedOption;
 import static de.teamprojekt.Util.Utils.setNavBar;
 import static de.teamprojekt.Util.Utils.toSqlDate;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import de.teamprojekt.Entity.Character;
 import de.teamprojekt.Entity.Enum.Category;
 import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
@@ -196,6 +198,12 @@ public class DetailActivity extends AppCompatActivity {
         todo.setEndDate(toSqlDate(endDate.getTime()));
         todo.setPriority(priority);
         todo.setCategory(category);
+
+        if (todo.getStatus()) {
+            Character character = dbHelper.getCharacter();
+            calculateLevel(todo, character);
+            dbHelper.updateCharacter(character);
+        }
 
         if (todo.getId() == -1) {
             dbHelper.addTodo(todo);
