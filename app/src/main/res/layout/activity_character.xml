@@ -28,7 +28,7 @@
                 android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/character_image"
+                    android:id="@+id/ivIcon"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginBottom="8dp"
@@ -36,7 +36,7 @@
                     android:src="@drawable/ic_character" />
 
                 <TextView
-                    android:id="@+id/character_name"
+                    android:id="@+id/tvCharacterName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -46,7 +46,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/character_age"
+                    android:id="@+id/tvCharacterAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -54,7 +54,7 @@
                     android:text="@string/character_age_placeholder" />
 
                 <TextView
-                    android:id="@+id/character_gender"
+                    android:id="@+id/tvCharacterGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -73,13 +73,14 @@
                 android:paddingHorizontal="16dp">
 
                 <TextView
+                    android:id="@+id/tvCharacterLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/default_level" />
 
                 <ProgressBar
-                    android:id="@+id/level_progress"
+                    android:id="@+id/pbCharacterLevel"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -101,14 +102,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_strength"
+                        android:id="@+id/tvStrength"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/strength" />
 
                     <TextView
-                        android:id="@+id/attribute_level_strength"
+                        android:id="@+id/pbStrength"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -130,14 +131,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_perception"
+                        android:id="@+id/tvPerception"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/perception" />
 
                     <TextView
-                        android:id="@+id/attribute_level_perception"
+                        android:id="@+id/pbPerception"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -159,14 +160,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_endurance"
+                        android:id="@+id/tvEndurance"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/endurance" />
 
                     <TextView
-                        android:id="@+id/attribute_level_endurance"
+                        android:id="@+id/pbEndurance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -188,14 +189,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_charisma"
+                        android:id="@+id/tvCharisma"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/charisma" />
 
                     <TextView
-                        android:id="@+id/attribute_level_charisma"
+                        android:id="@+id/pbCharisma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -217,14 +218,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_intelligence"
+                        android:id="@+id/tvIntelligence"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/intelligence" />
 
                     <TextView
-                        android:id="@+id/attribute_level_intelligence"
+                        android:id="@+id/pbIntelligence"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -246,14 +247,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_agility"
+                        android:id="@+id/tvAgility"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/agility" />
 
                     <TextView
-                        android:id="@+id/attribute_level_agility"
+                        android:id="@+id/pbAgility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />
@@ -275,14 +276,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/attribute_name_luck"
+                        android:id="@+id/tvLuck"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/luck" />
 
                     <TextView
-                        android:id="@+id/attribute_level_luck"
+                        android:id="@+id/pbLuck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_level" />

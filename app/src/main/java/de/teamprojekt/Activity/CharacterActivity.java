@@ -6,6 +6,8 @@ import static de.teamprojekt.Util.Utils.setNavBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.teamprojekt.R;
 
 public class CharacterActivity extends AppCompatActivity {
+    private ImageView characterIcon;
+    private TextView characterName;
+    private TextView characterGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
