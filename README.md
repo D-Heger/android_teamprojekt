@@ -180,7 +180,7 @@ Secondary Goal: Preferences beachten (Farben, Schriftgröße) - mostly done, jus
 better -> Morgen
 
 - MainActivty
-    - Liste befüllen - Done, wird noch nicht richtig aktualisiert -> Morgen
+    - Liste befüllen - Done, wird noch nicht richtig aktualisiert -> Morgen - Done
     - Swipe to delete - Done
     - Click to edit - Done
 - DetailActivity
@@ -195,7 +195,7 @@ better -> Morgen
     - Preferences anwenden - siehe oben
     - Preferences zurücksetzen - Done
 
-UI der TodoList/Items sollte noch überarbeitet werden -> Morgen
+UI der TodoList/Items sollte noch überarbeitet werden -> Morgen - Done
 
 Additioernal Goal: Swipe üb die BottomNavigationBar; Confirmation Dialog für Löschen von Todos ->
 Vielleicht später

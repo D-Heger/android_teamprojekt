@@ -30,6 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints="@string/text_title_detail"
                     android:ems="10"
                     android:hint="@string/text_title_detail"
                     android:inputType="text" />
@@ -48,7 +49,7 @@
                 android:layout_marginTop="@dimen/detail_top_margin"
                 android:orientation="horizontal">
 
-                <EditText
+                <de.teamprojekt.Util.ExpandableEditText
                     android:id="@+id/text_description_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

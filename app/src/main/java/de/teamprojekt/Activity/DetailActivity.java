@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,11 +30,12 @@ import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
 import de.teamprojekt.R;
 import de.teamprojekt.Util.DataBaseHelper;
+import de.teamprojekt.Util.ExpandableEditText;
 
 public class DetailActivity extends AppCompatActivity {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-    private TextView titleDetail;
-    private TextView descriptionDetail;
+    private EditText titleDetail;
+    private ExpandableEditText descriptionDetail;
     private Button buttonStartDate;
     private Button buttonEndDate;
     private TextView startDate;
