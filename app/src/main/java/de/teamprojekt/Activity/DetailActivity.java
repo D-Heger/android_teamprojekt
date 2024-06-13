@@ -57,17 +57,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        titleDetail = findViewById(R.id.text_title_detail);
-        descriptionDetail = findViewById(R.id.text_description_detail);
-        buttonStartDate = findViewById(R.id.button_select_start_date);
-        buttonEndDate = findViewById(R.id.button_select_end_date);
-        startDate = findViewById(R.id.text_view_selected_start_date);
-        endDate = findViewById(R.id.text_view_selected_end_date);
-        checkBox = findViewById(R.id.checkBox);
-        priorityDetail = findViewById(R.id.spinner_priority_detail);
-        categoryDetail = findViewById(R.id.spinner_category_detail);
-        buttonDelete = findViewById(R.id.button_delete_detail);
-        buttonSave = findViewById(R.id.button_save_detail);
+        assignViews();
 
         dbHelper = new DataBaseHelper(this);
 
@@ -155,6 +145,20 @@ public class DetailActivity extends AppCompatActivity {
         setNavBar(bnView, this, R.id.navigation_add);
     }
 
+    private void assignViews() {
+        titleDetail = findViewById(R.id.text_title_detail);
+        descriptionDetail = findViewById(R.id.text_description_detail);
+        buttonStartDate = findViewById(R.id.button_select_start_date);
+        buttonEndDate = findViewById(R.id.button_select_end_date);
+        startDate = findViewById(R.id.text_view_selected_start_date);
+        endDate = findViewById(R.id.text_view_selected_end_date);
+        checkBox = findViewById(R.id.checkBox);
+        priorityDetail = findViewById(R.id.spinner_priority_detail);
+        categoryDetail = findViewById(R.id.spinner_category_detail);
+        buttonDelete = findViewById(R.id.button_delete_detail);
+        buttonSave = findViewById(R.id.button_save_detail);
+    }
+
     private void initVals() {
         titleDetail.setText(todo.getTitle());
         descriptionDetail.setText(todo.getDescription());
@@ -203,6 +207,7 @@ public class DetailActivity extends AppCompatActivity {
             Character character = dbHelper.getCharacter();
             calculateLevel(todo, character);
             dbHelper.updateCharacter(character);
+            Toast.makeText(this, "Great job! You've completed a task!", Toast.LENGTH_SHORT).show();
         }
 
         if (todo.getId() == -1) {
