@@ -39,6 +39,11 @@ public class LevelCalculator {
         switch (type) {
             case STRENGTH:
                 character.setStrengthExp(character.getStrengthExp() + exp);
+                int tmpSkillExp = character.getStrengthExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getStrength())) {
+                    character.setStrength(character.getStrength() + 1);
+                    character.setStrengthExp(tmpSkillExp - calculateLevelCost(character.getStrength()));
+                }
                 break;
             case PERCEPTION:
                 break;
