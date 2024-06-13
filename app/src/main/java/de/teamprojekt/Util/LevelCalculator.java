@@ -35,27 +35,63 @@ public class LevelCalculator {
                 exp = exp * EXP_HIGH_PRIORITY;
                 break;
         }
-
+        int tmpSkillExp;
         switch (type) {
             case STRENGTH:
                 character.setStrengthExp(character.getStrengthExp() + exp);
-                int tmpSkillExp = character.getStrengthExp();
+                tmpSkillExp = character.getStrengthExp();
                 if (tmpSkillExp >= calculateLevelCost(character.getStrength())) {
                     character.setStrength(character.getStrength() + 1);
                     character.setStrengthExp(tmpSkillExp - calculateLevelCost(character.getStrength()));
                 }
                 break;
             case PERCEPTION:
+                character.setPerceptionExp(character.getPerceptionExp() + exp);
+                tmpSkillExp = character.getPerceptionExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getPerception())) {
+                    character.setPerception(character.getPerception() + 1);
+                    character.setPerceptionExp(tmpSkillExp - calculateLevelCost(character.getPerception()));
+                }
                 break;
             case ENDURANCE:
+                character.setEnduranceExp(character.getEnduranceExp() + exp);
+                tmpSkillExp = character.getEnduranceExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getEndurance())) {
+                    character.setEndurance(character.getEndurance() + 1);
+                    character.setEnduranceExp(tmpSkillExp - calculateLevelCost(character.getEndurance()));
+                }
                 break;
             case CHARISMA:
+                character.setCharismaExp(character.getCharismaExp() + exp);
+                tmpSkillExp = character.getCharismaExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getCharisma())) {
+                    character.setCharisma(character.getCharisma() + 1);
+                    character.setCharismaExp(tmpSkillExp - calculateLevelCost(character.getCharisma()));
+                }
                 break;
             case INTELLIGENCE:
+                character.setIntelligenceExp(character.getIntelligenceExp() + exp);
+                tmpSkillExp = character.getIntelligenceExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getIntelligence())) {
+                    character.setIntelligence(character.getIntelligence() + 1);
+                    character.setIntelligenceExp(tmpSkillExp - calculateLevelCost(character.getIntelligence()));
+                }
                 break;
             case AGILITY:
+                character.setAgilityExp(character.getAgilityExp() + exp);
+                tmpSkillExp = character.getAgilityExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getAgility())) {
+                    character.setAgility(character.getAgility() + 1);
+                    character.setAgilityExp(tmpSkillExp - calculateLevelCost(character.getAgility()));
+                }
                 break;
             case LUCK:
+                character.setLuckExp(character.getLuckExp() + exp);
+                tmpSkillExp = character.getLuckExp();
+                if (tmpSkillExp >= calculateLevelCost(character.getLuck())) {
+                    character.setLuck(character.getStrength() + 1);
+                    character.setLuckExp(tmpSkillExp - calculateLevelCost(character.getLuck()));
+                }
                 break;
         }
 
