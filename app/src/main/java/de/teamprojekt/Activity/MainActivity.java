@@ -6,7 +6,6 @@ import static de.teamprojekt.Util.Utils.setNavBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
@@ -25,7 +24,6 @@ import java.sql.Date;
 import java.util.List;
 
 import de.teamprojekt.Activity.Adapter.TodoAdapter;
-import de.teamprojekt.Entity.Character;
 import de.teamprojekt.Entity.Enum.Category;
 import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
@@ -52,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         // Initialize RecyclerView and DB helper
         todoListView = findViewById(R.id.recyclerView);
         dbHelper = new DataBaseHelper(this);
+
+        dbHelper.deleteCharacter();
+        // If there is no character in the database, launch the character creation process
+        if (dbHelper.getCharacter().getName() == null) {
+            startActivityForResult(new Intent(this, CharacterCreationActivity.class), REQUEST_CODE);
+        }
 
         // FIXME: REMOVE THIS
         // ADDING TODOS FOR TESTING PURPOSES IF TODO TABLE IS EMPTY
@@ -92,35 +96,35 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
             );
         }
 
-        // FIXME: REMOVE THIS
-        // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
-        if (dbHelper.getCharacter() == null) {
-            if (!dbHelper.addCharacter(new Character.Builder()
-                    .name("Red Guy")
-                    .age(28)
-                    .gender("RED")
-                    .icon(R.drawable.male1)
-                    .level(0)
-                    .experience(0)
-                    .strength(0)
-                    .strength_exp(0)
-                    .perception(0)
-                    .perception_exp(0)
-                    .endurance(10)
-                    .endurance_exp(100)
-                    .charisma(10)
-                    .charisma_exp(100)
-                    .intelligence(10)
-                    .intelligence_exp(100)
-                    .agility(10)
-                    .agility_exp(100)
-                    .luck(10)
-                    .luck_exp(100)
-                    .build()
-            )) {
-                Log.e("MainActivity", "Failed to add character");
-            }
-        }
+//        // FIXME: REMOVE THIS
+//        // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
+//        if (dbHelper.getCharacter() == null) {
+//            if (!dbHelper.addCharacter(new Character.Builder()
+//                    .name("Red Guy")
+//                    .age(28)
+//                    .gender("RED")
+//                    .icon(R.drawable.male1)
+//                    .level(0)
+//                    .experience(0)
+//                    .strength(0)
+//                    .strength_exp(0)
+//                    .perception(0)
+//                    .perception_exp(0)
+//                    .endurance(10)
+//                    .endurance_exp(100)
+//                    .charisma(10)
+//                    .charisma_exp(100)
+//                    .intelligence(10)
+//                    .intelligence_exp(100)
+//                    .agility(10)
+//                    .agility_exp(100)
+//                    .luck(10)
+//                    .luck_exp(100)
+//                    .build()
+//            )) {
+//                Log.e("MainActivity", "Failed to add character");
+//            }
+//        }
 
         // Load all completed todos from the database and fill the adapter
         todoList = dbHelper.getAllNonCompletedTodos();

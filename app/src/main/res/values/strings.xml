@@ -84,4 +84,8 @@
     <string name="character_gender_placeholder">Male</string>
     <string name="action_archive">Archive</string>
     <string name="back">Back</string>
+    <string name="character_name_hint">Enter character name</string>
+    <string name="next">Next</string>
+    <string name="character_age_hint">Enter character age</string>
+    <string name="character_gender_hint">Be creative ... Or not.</string>
 </resources>

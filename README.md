@@ -204,8 +204,8 @@ Vielleicht später
 
 Berechnung der Level und Experience - Done
 Berechnung der Experience pro Todo - Done
-Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung; Dialog für Reset + Reset
-Funktion per SettingsMenu -> Morgen
+Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung - Done bis auf Icons
+Dialog für Reset + Reset Funktion per SettingsMenu -> Morgen
 
 Wenn Todo Erledigt => nicht sichtbar in MainActivity - Done
 Suche Einbauen und Filter Hinzufügen ?
