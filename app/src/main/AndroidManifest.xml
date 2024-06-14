@@ -34,6 +34,10 @@
             android:name=".Activity.CharacterActivity"
             android:exported="true"
             android:theme="@style/Theme.TodoGamification" />
+        <activity
+            android:name=".Activity.ArchiveActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TodoGamification" />
     </application>
 
 </manifest>

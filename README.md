@@ -177,7 +177,7 @@ Datenbank für Todo und Character
 
 Main Goal: Activitys mit Datenbank verbinden
 Secondary Goal: Preferences beachten (Farben, Schriftgröße) - mostly done, just need to apply colors
-better -> Morgen
+better -> FEHLT!
 
 - MainActivty
     - Liste befüllen - Done, wird noch nicht richtig aktualisiert -> Morgen - Done
@@ -207,6 +207,6 @@ Berechnung der Experience pro Todo - Done
 Zusätzlich: Dialog(Vielleicht per Fragments?) für Charactererstellung; Dialog für Reset + Reset
 Funktion per SettingsMenu -> Morgen
 
-Wenn Todo Erledigt => nicht sichtbar in MainActivity
+Wenn Todo Erledigt => nicht sichtbar in MainActivity - Done
 Suche Einbauen und Filter Hinzufügen ?
-ADD unter Settings eine Archive Activity zum alle Todos ohne onClick
+ADD unter Settings eine Archive Activity zum alle Todos ohne onClick - Done

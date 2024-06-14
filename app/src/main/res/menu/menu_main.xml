@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="de.teamprojekt.Activity.MainActivity">
     <item
+        android:id="@+id/action_archive"
+        android:orderInCategory="99"
+        android:title="@string/action_archive"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
             }
         }
 
-        // Load To-do items from the database and fill the adapter
+        // Load all completed todos from the database and fill the adapter
         todoList = dbHelper.getAllNonCompletedTodos();
         todoAdapter = new TodoAdapter(todoList, this);
 

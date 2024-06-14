@@ -34,6 +34,7 @@ public class ExperienceCalculator {
     public static Character updateSkill(Character character, Skill skill, int exp) {
         try {
             increaseSkillExp(character, skill, exp);
+            Log.d("ExperienceCalculator", "Updated skill " + skill.getName() + " for character " + character.getName() + " with " + exp + " experience");
         } catch (ReflectiveOperationException e) {
             Log.e("ExperienceCalculator", "Error while updating skill", e);
         }

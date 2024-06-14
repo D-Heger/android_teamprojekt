@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Date;
 
+import de.teamprojekt.Activity.ArchiveActivity;
 import de.teamprojekt.Activity.CharacterActivity;
 import de.teamprojekt.Activity.DetailActivity;
 import de.teamprojekt.Activity.MainActivity;
@@ -42,6 +43,10 @@ public class Utils {
     public static boolean handleSelectedOption(Context context, MenuItem item) {
         int id = item.getItemId();
 
+        if (id == R.id.action_archive) {
+            context.startActivity(new Intent(context, ArchiveActivity.class));
+            return true;
+        }
         if (id == R.id.action_settings) {
             context.startActivity(new Intent(context, SettingsActivity.class));
             return true;
@@ -52,7 +57,7 @@ public class Utils {
         }
         return false;
     }
-    
+
     public static java.sql.Date toSqlDate(java.util.Date date) {
         return date == null ? null : new java.sql.Date(date.getTime());
     }
