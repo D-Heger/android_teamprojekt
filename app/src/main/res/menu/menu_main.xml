@@ -3,18 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="de.teamprojekt.Activity.MainActivity">
     <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:orderInCategory="100"
+        android:title="@string/action_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_filter"
+        android:menuCategory="secondary"
+        android:orderInCategory="101"
+        android:title="@string/action_filter"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/filter_reset"
+                android:title="@string/filter_reset" />
+            <item
+                android:id="@+id/filter_start_date"
+                android:title="@string/filter_by_start_date" />
+            <item
+                android:id="@+id/filter_end_date"
+                android:title="@string/filter_by_end_date" />
+            <item
+                android:id="@+id/filter_priority"
+                android:title="@string/filter_by_priority" />
+            <item
+                android:id="@+id/filter_category"
+                android:title="@string/filter_by_category" />
+        </menu>
+    </item>
+    <item
         android:id="@+id/action_archive"
-        android:orderInCategory="99"
+        android:orderInCategory="102"
         android:title="@string/action_archive"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="103"
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_reset"
-        android:orderInCategory="101"
+        android:orderInCategory="104"
         android:title="@string/action_reset"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_reset_character"
+        android:orderInCategory="105"
+        android:title="@string/action_reset_character"
         app:showAsAction="never" />
 </menu>

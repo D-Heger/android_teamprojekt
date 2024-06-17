@@ -42,6 +42,14 @@
             android:name=".Activity.CharacterCreationActivity"
             android:exported="true"
             android:theme="@style/Theme.TodoGamification" />
+        <activity
+            android:name=".Activity.ResetActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TodoGamification" />
+        <activity
+            android:name=".Activity.ResetCharacterActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TodoGamification" />
     </application>
 
 </manifest>

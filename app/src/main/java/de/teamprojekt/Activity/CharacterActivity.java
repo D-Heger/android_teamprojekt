@@ -76,25 +76,12 @@ public class CharacterActivity extends AppCompatActivity {
         // Get character from database
         dbHelper = new DataBaseHelper(this);
         character = dbHelper.getCharacter();
-        // Prepare progress bars
-        prepareProgressBars();
         // Initialize values
         initValues();
 
         // Set up bottom navigation bar
         BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
         setNavBar(bnView, this, R.id.navigation_character);
-    }
-
-    private void prepareProgressBars() {
-//        characterExp.setMax(calculateLevelCost(character.getLevel()));
-//        characterStrengthExp.setMax(calculateLevelCost(character.getStrength()));
-//        characterPerceptionExp.setMax(calculateLevelCost(character.getPerception()));
-//        characterEnduranceExp.setMax(calculateLevelCost(character.getEndurance()));
-//        characterCharismaExp.setMax(calculateLevelCost(character.getCharisma()));
-//        characterIntelligenceExp.setMax(calculateLevelCost(character.getIntelligence()));
-//        characterAgilityExp.setMax(calculateLevelCost(character.getAgility()));
-//        characterLuckExp.setMax(calculateLevelCost(character.getLuck()));
     }
 
     private void initValues() {
@@ -124,6 +111,13 @@ public class CharacterActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_search).setVisible(false);
+        menu.findItem(R.id.action_filter).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.teamprojekt.Entity.Character;
+import de.teamprojekt.Entity.Enum.Category;
+import de.teamprojekt.Entity.Enum.Priority;
 import de.teamprojekt.Entity.Todo;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -126,6 +128,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
+    public List<Todo> getAllCompletedTodos() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Todo> todos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Table.TODO_TABLE + " WHERE " + TodoColumn.STATUS + " = 1 ", null);
+        if (cursor.moveToFirst()) {
+            do {
+                todos.add(cursorToTodo(cursor));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return todos;
+    }
+
+    @SuppressLint("Range")
     public List<Todo> getAllNonCompletedTodos() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Todo> todos = new ArrayList<>();
@@ -153,6 +170,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return todo;
     }
 
+    public List<Todo> getTodosByPriority(Priority priority) {
+        return getTodosByField(TodoColumn.PRIORITY_ID, priority.toString());
+    }
+
+    public List<Todo> getTodosByCategory(Category category) {
+        return getTodosByField(TodoColumn.CATEGORY_ID, category.toString());
+    }
+
+    private List<Todo> getTodosByField(TodoColumn field, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Table.TODO_TABLE + " WHERE " + field + " = ?", new String[]{value});
+        List<Todo> todos = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                todos.add(cursorToTodo(cursor));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return todos;
+    }
+
 
     public boolean updateCharacterOneValue(CharacterColumn column, String value) {
         return update(Table.CHARACTER_TABLE.toString(), column.toString(), value, CharacterColumn.ID + " = 1");
@@ -175,6 +214,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long result = db.update(Table.TODO_TABLE.toString(), todoToContentValues(todo), TodoColumn.ID + " = " + todo.getId(), null);
         db.close();
         return result != -1;
+    }
+
+    public boolean deleteTodos() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + Table.TODO_TABLE);
+        db.execSQL(SQL_CREATE_TODO_TABLE);
+        db.close();
+        return true;
     }
 
     public boolean deleteCharacter() {

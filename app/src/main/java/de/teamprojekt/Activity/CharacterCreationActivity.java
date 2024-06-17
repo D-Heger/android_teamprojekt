@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import de.teamprojekt.Entity.Character;
 import de.teamprojekt.Fragment.AgeFragment;
 import de.teamprojekt.Fragment.GenderFragment;
+import de.teamprojekt.Fragment.IconFragment;
 import de.teamprojekt.Fragment.NameFragment;
 import de.teamprojekt.R;
 import de.teamprojekt.Util.DataBaseHelper;
@@ -15,20 +16,29 @@ import de.teamprojekt.Util.DataBaseHelper;
 public class CharacterCreationActivity extends AppCompatActivity {
     private final Character.Builder characterBuilder = new Character.Builder();
     private DataBaseHelper dbHelper;
+    private String name;
+    private int age;
+    private String gender;
+    private int icon;
 
     public void collectName(String name) {
-        characterBuilder.name(name);
+        this.name = name;
         loadNextFragment(new AgeFragment());
     }
 
     public void collectAge(int age) {
-        characterBuilder.age(age);
+        this.age = age;
         loadNextFragment(new GenderFragment());
     }
 
     public void collectGender(String gender) {
-        characterBuilder.gender(gender);
-        finalizeCharacter(); //TODO implement icon picker!!!!!!!!!!!!!!!!
+        this.gender = gender;
+        loadNextFragment(new IconFragment());
+    }
+
+    public void collectIcon(int icon) {
+        this.icon = icon;
+        finalizeCharacter();
     }
 
     @Override
@@ -55,7 +65,10 @@ public class CharacterCreationActivity extends AppCompatActivity {
 
     private void finalizeCharacter() {
         Character character = characterBuilder
-                .icon(R.drawable.ic_character) // TODO REMOVE AFTER IMPLEMENTING ICON PICKER
+                .name(name)
+                .age(age)
+                .gender(gender)
+                .icon(icon)
                 .level(0)
                 .experience(0)
                 .strength(0)

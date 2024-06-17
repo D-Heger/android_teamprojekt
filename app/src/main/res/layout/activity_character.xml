@@ -33,7 +33,7 @@
                     android:layout_height="64dp"
                     android:layout_marginBottom="8dp"
                     android:contentDescription="@string/character_image"
-                    android:src="@drawable/ic_character" />
+                    android:src="@drawable/icon1" />
 
                 <TextView
                     android:id="@+id/tvCharacterName"

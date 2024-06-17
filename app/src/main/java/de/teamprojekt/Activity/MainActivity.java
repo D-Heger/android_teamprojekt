@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +24,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import de.teamprojekt.Activity.Adapter.TodoAdapter;
@@ -33,10 +39,11 @@ import de.teamprojekt.Util.DataBaseHelper;
 public class MainActivity extends AppCompatActivity implements TodoAdapter.OnItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
     private static final int REQUEST_CODE = 1;
     private TodoAdapter todoAdapter;
-    private RecyclerView todoListView;
     private DataBaseHelper dbHelper;
     private List<Todo> todoList;
     private SharedPreferences sharedPreferences;
+    private boolean startDateAscending = true;
+    private boolean endDateAscending = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +55,9 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         setNavBar(bnView, this, R.id.navigation_list);
 
         // Initialize RecyclerView and DB helper
-        todoListView = findViewById(R.id.recyclerView);
+        RecyclerView todoListView = findViewById(R.id.recyclerView);
         dbHelper = new DataBaseHelper(this);
 
-        dbHelper.deleteCharacter();
         // If there is no character in the database, launch the character creation process
         if (dbHelper.getCharacter().getName() == null) {
             startActivityForResult(new Intent(this, CharacterCreationActivity.class), REQUEST_CODE);
@@ -191,9 +197,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
     }
 
     private void refreshTodoList() {
-        todoList.clear();
-        todoList.addAll(dbHelper.getAllNonCompletedTodos());
-        todoAdapter.notifyDataSetChanged();
+        todoAdapter.updateData(dbHelper.getAllNonCompletedTodos());
     }
 
     private void onTodoSwipe(int position) {
@@ -206,16 +210,107 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterForSearchQuery(newText);
+                return true;
+            }
+        });
+
         return true;
     }
 
+    private void filterForSearchQuery(String query) {
+        List<Todo> filteredList = new ArrayList<>();
+        if (query.isEmpty()) {
+            refreshTodoList();
+            return;
+        }
+        for (Todo todo : todoList) {
+            if (todo.getTitle().toLowerCase().contains(query.toLowerCase()) || todo.getDescription().toLowerCase().contains(query.toLowerCase()) || todo.getCategory().toString().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(todo);
+            }
+        }
+        todoAdapter.setTodoList(filteredList);
+        todoAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_search).setVisible(true);
+        menu.findItem(R.id.action_filter).setVisible(true);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.filter_reset) {
+            Toast.makeText(this, "Reset your filter.", Toast.LENGTH_SHORT).show();
+            refreshTodoList();
+            return true;
+        } else if (id == R.id.filter_start_date) {
+            if (startDateAscending) {
+                todoList.sort(Comparator.comparing(Todo::getStartDate));
+                startDateAscending = false;
+            } else {
+                todoList.sort((o1, o2) -> o2.getStartDate().compareTo(o1.getStartDate()));
+                startDateAscending = true;
+            }
+            todoAdapter.notifyDataSetChanged();
+            return true;
+        } else if (id == R.id.filter_end_date) {
+            if (endDateAscending) {
+                todoList.sort(Comparator.comparing(Todo::getEndDate));
+                endDateAscending = false;
+            } else {
+                todoList.sort((o1, o2) -> o2.getEndDate().compareTo(o1.getEndDate()));
+                endDateAscending = true;
+            }
+            todoAdapter.notifyDataSetChanged();
+            return true;
+        } else if (id == R.id.filter_priority) {
+            showFilterDialog(Priority.values());
+            return true;
+        } else if (id == R.id.filter_category) {
+            showFilterDialog(Category.values());
+            return true;
+        }
         if (handleSelectedOption(this, item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void showFilterDialog(Enum[] values) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String[] options = Arrays.stream(values).map(Enum::name).toArray(String[]::new);
+        builder.setItems(options, (dialog, which) -> {
+            filterTodoList(options[which]);
+        });
+        builder.create().show();
+    }
+
+    private void filterTodoList(String filterOption) {
+        List<Todo> filteredList;
+        if (Arrays.stream(Priority.values()).anyMatch(priority -> priority.name().equals(filterOption))) {
+            filteredList = dbHelper.getTodosByPriority(Priority.valueOf(filterOption));
+        } else {
+            filteredList = dbHelper.getTodosByCategory(Category.valueOf(filterOption));
+        }
+        todoAdapter.updateData(filteredList);
+    }
+
 
     @Override
     protected void onDestroy() {

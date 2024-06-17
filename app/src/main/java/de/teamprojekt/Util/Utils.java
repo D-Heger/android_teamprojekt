@@ -13,6 +13,7 @@ import de.teamprojekt.Activity.CharacterActivity;
 import de.teamprojekt.Activity.DetailActivity;
 import de.teamprojekt.Activity.MainActivity;
 import de.teamprojekt.Activity.ResetActivity;
+import de.teamprojekt.Activity.ResetCharacterActivity;
 import de.teamprojekt.Activity.SettingsActivity;
 import de.teamprojekt.R;
 
@@ -43,6 +44,12 @@ public class Utils {
     public static boolean handleSelectedOption(Context context, MenuItem item) {
         int id = item.getItemId();
 
+        if (id == R.id.action_search) {
+            return true;
+        }
+        if (id == R.id.action_filter) {
+            return true;
+        }
         if (id == R.id.action_archive) {
             context.startActivity(new Intent(context, ArchiveActivity.class));
             return true;
@@ -53,6 +60,10 @@ public class Utils {
         }
         if (id == R.id.action_reset) {
             context.startActivity(new Intent(context, ResetActivity.class));
+            return true;
+        }
+        if (id == R.id.action_reset_character) {
+            context.startActivity(new Intent(context, ResetCharacterActivity.class));
             return true;
         }
         return false;

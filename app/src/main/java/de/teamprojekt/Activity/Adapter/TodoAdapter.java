@@ -62,6 +62,12 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
         notifyDataSetChanged();
     }
 
+    public void updateData(List<Todo> newTodos) {
+        todoList.clear();
+        todoList.addAll(newTodos);
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

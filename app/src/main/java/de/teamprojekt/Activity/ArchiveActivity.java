@@ -46,7 +46,7 @@ public class ArchiveActivity extends AppCompatActivity implements TodoAdapter.On
         dbHelper = new DataBaseHelper(this);
 
         //Load all todos
-        todoList = dbHelper.getAllTodos();
+        todoList = dbHelper.getAllCompletedTodos();
         todoAdapter = new TodoAdapter(todoList, this);
 
         // Set the adapter for the RecyclerView
