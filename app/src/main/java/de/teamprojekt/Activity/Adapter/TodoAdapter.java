@@ -22,9 +22,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
 
     // Styling
     private String fontSize;
-    private int textColor;
-    private int notCompletedColor;
-    private int completedColor;
 
     public TodoAdapter(List<Todo> todoList, OnItemClickListener onClickListener) {
         this.todoList = todoList;
@@ -46,7 +43,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
     @Override
     public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
         Todo todo = todoList.get(position);
-        holder.bind(todo, onClickListener, fontSize, textColor, notCompletedColor, completedColor);
+        holder.bind(todo, onClickListener, fontSize);
     }
 
     @Override
@@ -54,11 +51,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
         return todoList.size();
     }
 
-    public void applyPreferences(String fontSize, int textColor, int notCompletedColor, int completedColor) {
+    public void applyPreferences(String fontSize) {
         this.fontSize = fontSize;
-        this.textColor = textColor;
-        this.notCompletedColor = notCompletedColor;
-        this.completedColor = completedColor;
         notifyDataSetChanged();
     }
 
@@ -92,7 +86,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             tvDueDate = itemView.findViewById(R.id.tvDueDate);
         }
 
-        public void bind(Todo todo, OnItemClickListener onClickListener, String fontSize, int textColor, int notCompletedColor, int completedColor) {
+        public void bind(Todo todo, OnItemClickListener onClickListener, String fontSize) {
             // Applying data values
             tvTitle.setText(todo.getTitle());
             tvDescription.setText(getTruncatedDescription(todo.getDescription()));
@@ -122,20 +116,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             tvStartDate.setTextSize(size);
             tvDueDate.setTextSize(size);
 
-            // Text color
-            tvTitle.setTextColor(textColor);
-            tvDescription.setTextColor(textColor);
-            tvStatus.setTextColor(textColor);
-            tvCategories.setTextColor(textColor);
-            tvPriority.setTextColor(textColor);
-            tvStartDate.setTextColor(textColor);
-            tvDueDate.setTextColor(textColor);
-
             // Set priority background color
             tvPriority.setBackgroundColor(todo.getPriority().getColor());
-
-            // Completed status color
-            tvStatus.setBackgroundColor(todo.getStatus() ? completedColor : notCompletedColor);
 
             // Set click listener
             itemView.setOnClickListener(v -> onClickListener.onItemClick(getAdapterPosition()));

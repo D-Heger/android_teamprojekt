@@ -73,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
             int _year = startDateC.get(Calendar.YEAR);
             int _month = startDateC.get(Calendar.MONTH);
             int _day = startDateC.get(Calendar.DAY_OF_MONTH);
-            if (todo != null) {
+            if (todo != null && todo.getStartDate() != null) {
                 _year = todo.getStartDate().getYear() + 1900;
                 _month = todo.getStartDate().getMonth();
                 _day = todo.getStartDate().getDate();
@@ -99,7 +99,7 @@ public class DetailActivity extends AppCompatActivity {
             int _year = endDateC.get(Calendar.YEAR);
             int _month = endDateC.get(Calendar.MONTH);
             int _day = endDateC.get(Calendar.DAY_OF_MONTH) + 1;
-            if (todo != null) {
+            if (todo != null && todo.getEndDate() != null) {
                 _year = todo.getEndDate().getYear() + 1900;
                 _month = todo.getEndDate().getMonth();
                 _day = todo.getEndDate().getDate();
@@ -210,11 +210,12 @@ public class DetailActivity extends AppCompatActivity {
             Toast.makeText(this, "Great job! You've completed a task!", Toast.LENGTH_SHORT).show();
         }
 
-        if (todo.getId() == -1) {
+        if (todo.getId() == 0) {
             dbHelper.addTodo(todo);
         } else {
             dbHelper.updateTodo(todo);
         }
+        
         setResult(RESULT_OK);
         finish();
     }

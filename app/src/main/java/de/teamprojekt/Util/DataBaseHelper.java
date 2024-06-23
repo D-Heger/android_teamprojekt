@@ -14,6 +14,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +94,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean addTodo(Todo todo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = todoToContentValues(todo);
+        Log.d("DataBaseHelper", "addTodo: " + values);
         long result = db.insert(Table.TODO_TABLE.toString(), null, values);
         db.close();
+        Log.d("DataBaseHelper", "addTodo: " + result);
         return result != -1;
     }
 

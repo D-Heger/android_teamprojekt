@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,9 +60,7 @@ public class ArchiveActivity extends AppCompatActivity implements TodoAdapter.On
         applyPreferences();
 
         // Set up fab
-        findViewById(R.id.fab).setOnClickListener(v -> {
-            finish();
-        });
+        findViewById(R.id.fab).setOnClickListener(v -> finish());
 
         // Set up swipe to delete
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -97,15 +94,9 @@ public class ArchiveActivity extends AppCompatActivity implements TodoAdapter.On
         // Retrieve preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String fontSize = sharedPreferences.getString("pref_font_size", "medium");
-        int backgroundColor = sharedPreferences.getInt("pref_background_color", R.color.white);
-        int textColor = sharedPreferences.getInt("pref_text_color", R.color.black);
-        int notCompletedColor = sharedPreferences.getInt("pref_not_completed_color", R.color.red);
-        int completedColor = sharedPreferences.getInt("pref_completed_color", R.color.green);
 
         // Apply preferences
-        RelativeLayout layout = findViewById(R.id.main);
-        layout.setBackgroundColor(getResources().getColor(backgroundColor, null));
-        todoAdapter.applyPreferences(fontSize, textColor, notCompletedColor, completedColor);
+        todoAdapter.applyPreferences(fontSize);
     }
 
     @Override

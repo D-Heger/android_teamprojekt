@@ -2,51 +2,21 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="General">
         <ListPreference
-            android:key="pref_font_size"
-            android:title="Font Size"
-            android:summary="Change the font size"
+            android:defaultValue="medium"
             android:entries="@array/font_size_entries"
             android:entryValues="@array/font_size_values"
-            android:defaultValue="medium"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Base Colors">
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_background"
-            android:title="Background Color"
-            android:summary="Change the background color"
-            android:defaultValue="@color/white"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_text"
-            android:title="Text Color"
-            android:summary="Change the text color"
-            android:defaultValue="@color/black"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Todo Colors">
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_not_completed"
-            android:title="Not Completed To-Do Color"
-            android:summary="Change not completed To-Do color"
-            android:defaultValue="@color/red"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
-        <io.syslogic.colorpicker.ColorPickerPreference
-            android:key="pref_color_completed"
-            android:title="Completed To-Do Color"
-            android:summary="Change completed To-Do color"
-            android:defaultValue="@color/green"
-            android:icon="@drawable/ic_baseline_invert_colors"/>
+            android:key="pref_font_size"
+            android:summary="Change the font size"
+            android:title="Font Size" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Reset">
         <Preference
-            android:key="pref_reset"
-            android:title="Reset Settings"
-            android:summary="Reset all settings to default"
+            android:defaultValue="false"
             android:icon="@drawable/ic_baseline_restore"
-            android:defaultValue="false"/>
+            android:key="pref_reset"
+            android:summary="Reset all settings to default"
+            android:title="Reset Settings" />
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>

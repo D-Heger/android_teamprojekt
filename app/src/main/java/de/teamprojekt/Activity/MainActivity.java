@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -53,6 +51,20 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         // Set up bottom navigation bar
         BottomNavigationView bnView = findViewById(R.id.bottom_navigation);
         setNavBar(bnView, this, R.id.navigation_list);
+        bnView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_list) {
+                return true;
+            } else if (itemId == R.id.navigation_add) {
+                startActivityForResult(new Intent(this, DetailActivity.class), REQUEST_CODE);
+                return true;
+            } else if (itemId == R.id.navigation_character) {
+                startActivity(new Intent(this, CharacterActivity.class));
+                return true;
+            }
+            return false;
+        });
 
         // Initialize RecyclerView and DB helper
         RecyclerView todoListView = findViewById(R.id.recyclerView);
@@ -65,42 +77,42 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
 
         // FIXME: REMOVE THIS
         // ADDING TODOS FOR TESTING PURPOSES IF TODO TABLE IS EMPTY
-        todoList = dbHelper.getAllNonCompletedTodos();
-        if (todoList.isEmpty()) {
-            dbHelper.addTodo(new Todo.Builder()
-                    .id(0)
-                    .title("Test")
-                    .description("Test description")
-                    .startDate(new Date(System.currentTimeMillis()))
-                    .endDate(new Date(System.currentTimeMillis() * 2))
-                    .status(false)
-                    .priority(Priority.MEDIUM)
-                    .category(Category.CHESS)
-                    .build()
-            );
-            dbHelper.addTodo(new Todo.Builder()
-                    .id(1)
-                    .title("Test")
-                    .description("Test description")
-                    .startDate(new Date(System.currentTimeMillis()))
-                    .endDate(new Date(System.currentTimeMillis() * 2))
-                    .status(false)
-                    .priority(Priority.MEDIUM)
-                    .category(Category.CHESS)
-                    .build()
-            );
-            dbHelper.addTodo(new Todo.Builder()
-                    .id(2)
-                    .title("Test")
-                    .description("Test description")
-                    .startDate(new Date(System.currentTimeMillis()))
-                    .endDate(new Date(System.currentTimeMillis() * 2))
-                    .status(false)
-                    .priority(Priority.MEDIUM)
-                    .category(Category.CHESS)
-                    .build()
-            );
-        }
+//        todoList = dbHelper.getAllNonCompletedTodos();
+//        if (todoList.isEmpty()) {
+//            dbHelper.addTodo(new Todo.Builder()
+//                    .id(0)
+//                    .title("Test")
+//                    .description("Test description")
+//                    .startDate(new Date(System.currentTimeMillis()))
+//                    .endDate(new Date(System.currentTimeMillis() * 2))
+//                    .status(false)
+//                    .priority(Priority.MEDIUM)
+//                    .category(Category.CHESS)
+//                    .build()
+//            );
+//            dbHelper.addTodo(new Todo.Builder()
+//                    .id(1)
+//                    .title("Test")
+//                    .description("Test description")
+//                    .startDate(new Date(System.currentTimeMillis()))
+//                    .endDate(new Date(System.currentTimeMillis() * 2))
+//                    .status(false)
+//                    .priority(Priority.MEDIUM)
+//                    .category(Category.CHESS)
+//                    .build()
+//            );
+//            dbHelper.addTodo(new Todo.Builder()
+//                    .id(2)
+//                    .title("Test")
+//                    .description("Test description")
+//                    .startDate(new Date(System.currentTimeMillis()))
+//                    .endDate(new Date(System.currentTimeMillis() * 2))
+//                    .status(false)
+//                    .priority(Priority.MEDIUM)
+//                    .category(Category.CHESS)
+//                    .build()
+//            );
+//        }
 
 //        // FIXME: REMOVE THIS
 //        // ADDING A CHARACTER FOR TESTING PURPOSES IF CHARACTER TABLE IS EMPTY
@@ -172,15 +184,9 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
         // Retrieve preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String fontSize = sharedPreferences.getString("pref_font_size", "medium");
-        int backgroundColor = sharedPreferences.getInt("pref_background_color", R.color.white);
-        int textColor = sharedPreferences.getInt("pref_text_color", R.color.black);
-        int notCompletedColor = sharedPreferences.getInt("pref_not_completed_color", R.color.red);
-        int completedColor = sharedPreferences.getInt("pref_completed_color", R.color.green);
 
         // Apply preferences
-        RelativeLayout layout = findViewById(R.id.main);
-        layout.setBackgroundColor(getResources().getColor(backgroundColor, null));
-        todoAdapter.applyPreferences(fontSize, textColor, notCompletedColor, completedColor);
+        todoAdapter.applyPreferences(fontSize);
     }
 
     @Override
@@ -197,7 +203,9 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnIte
     }
 
     private void refreshTodoList() {
-        todoAdapter.updateData(dbHelper.getAllNonCompletedTodos());
+        todoList.clear();
+        todoList.addAll(dbHelper.getAllNonCompletedTodos());
+        todoAdapter.notifyDataSetChanged();
     }
 
     private void onTodoSwipe(int position) {
