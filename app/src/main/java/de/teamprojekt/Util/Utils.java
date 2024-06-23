@@ -26,7 +26,6 @@ public class Utils {
             if (itemId == selectedItemId) {
                 return true; // Already selected, no need to do anything
             }
-
             if (itemId == R.id.navigation_list) {
                 context.startActivity(new Intent(context, MainActivity.class));
                 return true;

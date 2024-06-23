@@ -5,7 +5,6 @@ import static de.teamprojekt.Util.Constants.CalculationConstants.EXP;
 import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_HIGH_PRIORITY;
 import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_LOW_PRIORITY;
 import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_MEDIUM_PRIORITY;
-import static de.teamprojekt.Util.Constants.CalculationConstants.EXP_MUL;
 import static de.teamprojekt.Util.Constants.CalculationConstants.INITIAL_EXP;
 import static de.teamprojekt.Util.ExperienceCalculator.updateSkill;
 
@@ -15,7 +14,7 @@ import de.teamprojekt.Entity.Todo;
 
 public class LevelCalculator {
     public static int calculateLevelCost(int level) {
-        return (int) Math.floor(BASE_EXP * Math.pow(level, EXP_MUL) + INITIAL_EXP);
+        return (int) Math.floor(BASE_EXP * level + INITIAL_EXP);
     }
 
     public static int calculateProgress(int level, int exp) {
